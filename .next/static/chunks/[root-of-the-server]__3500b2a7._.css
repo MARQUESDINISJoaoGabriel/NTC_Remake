@@ -1182,12 +1182,12 @@ img, video {
   max-width: 28rem;
 }
 
-.max-w-xl {
-  max-width: 36rem;
-}
-
 .max-w-none {
   max-width: none;
+}
+
+.max-w-xl {
+  max-width: 36rem;
 }
 
 .flex-1 {
@@ -1242,6 +1242,10 @@ img, video {
   gap: 3rem;
 }
 
+.gap-2 {
+  gap: .5rem;
+}
+
 .gap-4 {
   gap: 1rem;
 }
@@ -1252,10 +1256,6 @@ img, video {
 
 .gap-8 {
   gap: 2rem;
-}
-
-.gap-2 {
-  gap: .5rem;
 }
 
 .space-y-1 > :not([hidden]) ~ :not([hidden]) {
