@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function HeroSection() {
   return (
@@ -12,6 +13,16 @@ export default function HeroSection() {
         transition={{ duration: 0.7 }}
         className="relative z-10 max-w-3xl px-4"
       >
+        <Image
+            src="/images/logo.png"
+            alt="NTC Logo"
+            width={250}
+            height={250}
+            style={{
+              margin: "auto",
+            }}
+            priority
+          />
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Adventure Starts Here</h1>
         <p className="text-lg md:text-xl text-white/80 mb-6">
           Join the Nautical Training Corps – where future leaders learn discipline, skills, and teamwork.

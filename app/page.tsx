@@ -1,13 +1,14 @@
 // app/page.tsx
-import HeroSection from "@/components/HeroSection";
-import WhyJoinSection from "@/components/WhyJoinSection";
-import FindShipSection from "@/components/FindShipSection";
-import TestimonialCarousel from "@/components/TestimonialCarousel";
-import UpcomingEvents from "@/components/UpcomingEvents";        
-import AboutSection from "@/components/AboutSection";
-import CadetPathSection from "@/components/CadetPathSection";
-import ActivitiesSection from "@/components/ActivitiesSection";
-import JoinNowSection from "@/components/JoinNowSection";
+import HeroSection from "@/components/HomeSections/HeroSection";
+import WhyJoinSection from "@/components/HomeSections/WhyJoinSection";
+import FindShipSection from "@/components/HomeSections/FindShipSection";
+import TestimonialCarousel from "@/components/HomeSections/TestimonialCarousel";
+import UpcomingEvents from "@/components/HomeSections/UpcomingEvents";        
+import AboutSection from "@/components/HomeSections/AboutSection";
+import CadetPathSection from "@/components/HomeSections/CadetPathSection";
+import ActivitiesSection from "@/components/HomeSections/ActivitiesSection";
+import JoinNowSection from "@/components/HomeSections/JoinNowSection";
+import NewsPreview from "@/components/HomeSections/NewsPreview";
 
 
 export default function Home() {
@@ -18,14 +19,11 @@ export default function Home() {
       <WhyJoinSection />
       <FindShipSection />
       <TestimonialCarousel />
+      <NewsPreview />
       <UpcomingEvents />
       <CadetPathSection />
       <ActivitiesSection />
       <JoinNowSection />
-    
-      
     </>
-
-    
   );
 }

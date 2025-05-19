@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,16 +12,25 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/activities", label: "Activities" },
+    { href: "/news", label: "News" },
     { href: "/find-ship", label: "Find a Ship" },
-    { href: "/contact", label: "Contact" },
     { href: "/parents", label: "Parents" },
+    { href: "/contact", label: "Contact" },
   ];
 
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-ntcBlue font-extrabold text-xl">
-          Nautical Training Corps
+        {/* Logo + Title */}
+        <Link href="/" className="flex items-center gap-2">
+          <Image
+            src="/images/logo.png"
+            alt="NTC Logo"
+            width={40}
+            height={40}
+            priority
+          />
+          <span className="text-ntcBlue font-extrabold text-xl">Nautical Training Corps</span>
         </Link>
 
         <button
