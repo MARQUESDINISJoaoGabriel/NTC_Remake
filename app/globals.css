@@ -7,4 +7,10 @@
 
 body {
   @apply bg-white text-gray-900 font-sans;
+}  
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
