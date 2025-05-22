@@ -24,7 +24,7 @@ export default function Home() {
       <UpcomingEvents />
       <CadetPathSection />
       <ActivitiesSection />
-      <Quizz />
+      <Quizz/>
       <JoinNowSection />
     </>
   );
