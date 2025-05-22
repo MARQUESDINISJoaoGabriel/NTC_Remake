@@ -938,9 +938,12 @@ __turbopack_context__.s({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/render/components/motion/proxy.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/framer-motion/dist/es/components/AnimatePresence/index.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
 'use client';
+;
 ;
 const allQuestions = [
     {
@@ -1100,112 +1103,170 @@ function QuizPage() {
         children: "Loading quiz..."
     }, void 0, false, {
         fileName: "[project]/components/HomeSections/quizz.tsx",
-        lineNumber: 134,
+        lineNumber: 135,
         columnNumber: 42
     }, this);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "p-6 max-w-xl mx-auto text-center",
-        children: !finished ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                    className: "text-xl font-bold mb-4",
-                    children: [
-                        "Question ",
-                        current + 1,
-                        " / ",
-                        quizQuestions.length
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/HomeSections/quizz.tsx",
-                    lineNumber: 140,
-                    columnNumber: 11
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    className: "mb-4",
-                    children: currentQuestion.question
-                }, void 0, false, {
-                    fileName: "[project]/components/HomeSections/quizz.tsx",
-                    lineNumber: 143,
-                    columnNumber: 11
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex flex-col gap-2 mb-4",
-                    children: currentQuestion.options.map((option, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: ()=>handleOptionClick(index),
-                            disabled: showFeedback,
-                            className: `p-2 rounded border ${getButtonStyle(index)}`,
-                            children: option
-                        }, index, false, {
-                            fileName: "[project]/components/HomeSections/quizz.tsx",
-                            lineNumber: 146,
-                            columnNumber: 15
-                        }, this))
-                }, void 0, false, {
-                    fileName: "[project]/components/HomeSections/quizz.tsx",
-                    lineNumber: 144,
-                    columnNumber: 11
-                }, this),
-                showFeedback && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    className: "mb-4",
-                    children: selected === currentQuestion.answer ? '✅ Correct!' : `❌ Incorrect.`
-                }, void 0, false, {
-                    fileName: "[project]/components/HomeSections/quizz.tsx",
-                    lineNumber: 157,
-                    columnNumber: 13
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                    onClick: handleNext,
-                    disabled: !showFeedback,
-                    className: "mt-2 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50",
-                    children: current < quizQuestions.length - 1 ? 'Next' : 'Finish'
-                }, void 0, false, {
-                    fileName: "[project]/components/HomeSections/quizz.tsx",
-                    lineNumber: 163,
-                    columnNumber: 11
-                }, this)
-            ]
-        }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            children: [
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                    className: "text-2xl font-bold mb-4",
-                    children: "Results"
-                }, void 0, false, {
-                    fileName: "[project]/components/HomeSections/quizz.tsx",
-                    lineNumber: 173,
-                    columnNumber: 11
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                    className: "mb-4",
-                    children: [
-                        "You scored ",
-                        score,
-                        " out of ",
-                        quizQuestions.length,
-                        " correct!"
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/components/HomeSections/quizz.tsx",
-                    lineNumber: 174,
-                    columnNumber: 11
-                }, this),
-                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                    onClick: handleRestart,
-                    className: "px-4 py-2 bg-purple-600 text-white rounded",
-                    children: "Restart Quiz"
-                }, void 0, false, {
-                    fileName: "[project]/components/HomeSections/quizz.tsx",
-                    lineNumber: 177,
-                    columnNumber: 11
-                }, this)
-            ]
-        }, void 0, true, {
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
+            mode: "wait",
+            children: !finished ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                initial: {
+                    opacity: 0,
+                    y: 30
+                },
+                animate: {
+                    opacity: 1,
+                    y: 0
+                },
+                exit: {
+                    opacity: 0,
+                    y: -30
+                },
+                transition: {
+                    duration: 0.4
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        className: "text-xl font-bold mb-4",
+                        children: [
+                            "Question ",
+                            current + 1,
+                            " / ",
+                            quizQuestions.length
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/HomeSections/quizz.tsx",
+                        lineNumber: 148,
+                        columnNumber: 7
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "mb-4",
+                        children: currentQuestion.question
+                    }, void 0, false, {
+                        fileName: "[project]/components/HomeSections/quizz.tsx",
+                        lineNumber: 151,
+                        columnNumber: 7
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "flex flex-col gap-2 mb-4",
+                        children: currentQuestion.options.map((option, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
+                                onClick: ()=>handleOptionClick(index),
+                                disabled: showFeedback,
+                                whileTap: {
+                                    scale: 0.95
+                                },
+                                whileHover: {
+                                    scale: 1.02
+                                },
+                                className: `p-2 rounded border transition-colors duration-200 ${getButtonStyle(index)}`,
+                                children: option
+                            }, index, false, {
+                                fileName: "[project]/components/HomeSections/quizz.tsx",
+                                lineNumber: 155,
+                                columnNumber: 11
+                            }, this))
+                    }, void 0, false, {
+                        fileName: "[project]/components/HomeSections/quizz.tsx",
+                        lineNumber: 153,
+                        columnNumber: 7
+                    }, this),
+                    showFeedback && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].p, {
+                        className: "mb-4",
+                        initial: {
+                            opacity: 0
+                        },
+                        animate: {
+                            opacity: 1
+                        },
+                        children: selected === currentQuestion.answer ? '✅ Correct!' : `❌ Incorrect.`
+                    }, void 0, false, {
+                        fileName: "[project]/components/HomeSections/quizz.tsx",
+                        lineNumber: 169,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
+                        onClick: handleNext,
+                        disabled: !showFeedback,
+                        whileTap: {
+                            scale: 0.95
+                        },
+                        className: "mt-2 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50",
+                        children: current < quizQuestions.length - 1 ? 'Next' : 'Finish'
+                    }, void 0, false, {
+                        fileName: "[project]/components/HomeSections/quizz.tsx",
+                        lineNumber: 180,
+                        columnNumber: 7
+                    }, this)
+                ]
+            }, current, true, {
+                fileName: "[project]/components/HomeSections/quizz.tsx",
+                lineNumber: 141,
+                columnNumber: 5
+            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                initial: {
+                    opacity: 0,
+                    scale: 0.8
+                },
+                animate: {
+                    opacity: 1,
+                    scale: 1
+                },
+                exit: {
+                    opacity: 0
+                },
+                transition: {
+                    duration: 0.4
+                },
+                children: [
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                        className: "text-2xl font-bold mb-4",
+                        children: "Results"
+                    }, void 0, false, {
+                        fileName: "[project]/components/HomeSections/quizz.tsx",
+                        lineNumber: 197,
+                        columnNumber: 7
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "mb-4",
+                        children: [
+                            "You scored ",
+                            score,
+                            " out of ",
+                            quizQuestions.length,
+                            " correct!"
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/components/HomeSections/quizz.tsx",
+                        lineNumber: 198,
+                        columnNumber: 7
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
+                        onClick: handleRestart,
+                        whileTap: {
+                            scale: 0.95
+                        },
+                        className: "px-4 py-2 bg-purple-600 text-white rounded",
+                        children: "Restart Quiz"
+                    }, void 0, false, {
+                        fileName: "[project]/components/HomeSections/quizz.tsx",
+                        lineNumber: 201,
+                        columnNumber: 7
+                    }, this)
+                ]
+            }, "results", true, {
+                fileName: "[project]/components/HomeSections/quizz.tsx",
+                lineNumber: 190,
+                columnNumber: 5
+            }, this)
+        }, void 0, false, {
             fileName: "[project]/components/HomeSections/quizz.tsx",
-            lineNumber: 172,
-            columnNumber: 9
+            lineNumber: 139,
+            columnNumber: 6
         }, this)
     }, void 0, false, {
         fileName: "[project]/components/HomeSections/quizz.tsx",
-        lineNumber: 137,
+        lineNumber: 138,
         columnNumber: 5
     }, this);
 }

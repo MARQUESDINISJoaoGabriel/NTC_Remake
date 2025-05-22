@@ -1748,6 +1748,10 @@ img, video {
   transition-duration: .3s;
 }
 
+.duration-200 {
+  transition-duration: .2s;
+}
+
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));

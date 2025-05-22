@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 type Question = {
   question: string;
@@ -135,53 +136,78 @@ export default function QuizPage() {
 
   return (
     <div className="p-6 max-w-xl mx-auto text-center">
-      {!finished ? (
-        <>
-          <h2 className="text-xl font-bold mb-4">
-            Question {current + 1} / {quizQuestions.length}
-          </h2>
-          <p className="mb-4">{currentQuestion.question}</p>
-          <div className="flex flex-col gap-2 mb-4">
-            {currentQuestion.options.map((option, index) => (
-              <button
-                key={index}
-                onClick={() => handleOptionClick(index)}
-                disabled={showFeedback}
-                className={`p-2 rounded border ${getButtonStyle(index)}`}
-              >
-                {option}
-              </button>
-            ))}
-          </div>
-          {showFeedback && (
-            <p className="mb-4">
-              {selected === currentQuestion.answer
-                ? '✅ Correct!'
-                : `❌ Incorrect.`}
-            </p>
-          )}
-          <button
-            onClick={handleNext}
-            disabled={!showFeedback}
-            className="mt-2 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
+     <AnimatePresence mode="wait">
+  {!finished ? (
+    <motion.div
+      key={current}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -30 }}
+      transition={{ duration: 0.4 }}
+    >
+      <h2 className="text-xl font-bold mb-4">
+        Question {current + 1} / {quizQuestions.length}
+      </h2>
+      <p className="mb-4">{currentQuestion.question}</p>
+
+      <div className="flex flex-col gap-2 mb-4">
+        {currentQuestion.options.map((option, index) => (
+          <motion.button
+            key={index}
+            onClick={() => handleOptionClick(index)}
+            disabled={showFeedback}
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            className={`p-2 rounded border transition-colors duration-200 ${getButtonStyle(index)}`}
           >
-            {current < quizQuestions.length - 1 ? 'Next' : 'Finish'}
-          </button>
-        </>
-      ) : (
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Results</h2>
-          <p className="mb-4">
-            You scored {score} out of {quizQuestions.length} correct!
-          </p>
-          <button
-            onClick={handleRestart}
-            className="px-4 py-2 bg-purple-600 text-white rounded"
-          >
-            Restart Quiz
-          </button>
-        </div>
+            {option}
+          </motion.button>
+        ))}
+      </div>
+
+      {showFeedback && (
+        <motion.p
+          className="mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
+          {selected === currentQuestion.answer
+            ? '✅ Correct!'
+            : `❌ Incorrect.`}
+        </motion.p>
       )}
+
+      <motion.button
+        onClick={handleNext}
+        disabled={!showFeedback}
+        whileTap={{ scale: 0.95 }}
+        className="mt-2 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
+      >
+        {current < quizQuestions.length - 1 ? 'Next' : 'Finish'}
+      </motion.button>
+    </motion.div>
+  ) : (
+    <motion.div
+      key="results"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+    >
+      <h2 className="text-2xl font-bold mb-4">Results</h2>
+      <p className="mb-4">
+        You scored {score} out of {quizQuestions.length} correct!
+      </p>
+      <motion.button
+        onClick={handleRestart}
+        whileTap={{ scale: 0.95 }}
+        className="px-4 py-2 bg-purple-600 text-white rounded"
+      >
+        Restart Quiz
+      </motion.button>
+    </motion.div>
+  )}
+</AnimatePresence>
     </div>
   );
 }
