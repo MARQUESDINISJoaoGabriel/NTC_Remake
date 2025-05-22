@@ -1,3 +1,7 @@
+"use client";
+
+import { Card, CardContent } from "@/components/ui/card";
+
 const benefits = [
   {
     icon: "🛶",
@@ -21,7 +25,7 @@ const benefits = [
   },
 ];
 
-export default function WhyJoinSection() {
+export function WhyJoinSection() {
   return (
     <section className="py-16 px-4 md:px-10 bg-gray-100 text-gray-900">
       <div className="max-w-5xl mx-auto text-center mb-12">
@@ -33,14 +37,13 @@ export default function WhyJoinSection() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {benefits.map((b) => (
-          <div
-            key={b.title}
-            className="bg-white shadow-xl rounded-2xl p-6 text-center hover:scale-105 transition transform"
-          >
-            <div className="text-4xl mb-4">{b.icon}</div>
-            <h3 className="text-xl font-semibold mb-2">{b.title}</h3>
-            <p className="text-sm text-gray-600">{b.desc}</p>
-          </div>
+          <Card key={b.title} className="text-center hover:scale-105 transition-transform">
+            <CardContent className="p-6">
+              <div className="text-4xl mb-4">{b.icon}</div>
+              <h3 className="text-xl font-semibold mb-2">{b.title}</h3>
+              <p className="text-sm text-gray-600">{b.desc}</p>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </section>

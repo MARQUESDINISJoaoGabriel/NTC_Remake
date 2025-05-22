@@ -1,6 +1,7 @@
 "use client";
 
 import { Music, Compass, LifeBuoy, Users } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 
 const activities = [
   {
@@ -27,7 +28,7 @@ const activities = [
 
 export default function ActivitiesSection() {
   return (
-    <section id="activities" className="bg-blue-100 py-20 px-6 md:px-12">
+    <section id="activities" className="bg-blue-100 py-20 px-6">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-ntcBlue mb-4">
           What You’ll Get Up To
@@ -36,16 +37,15 @@ export default function ActivitiesSection() {
           Cadets take part in exciting activities that build real-world skills, discipline, and fun!
         </p>
 
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {activities.map((activity, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl p-6 shadow hover:shadow-md transition"
-            >
-              <div className="mb-3">{activity.icon}</div>
-              <h3 className="text-lg font-bold text-gray-800 mb-2">{activity.title}</h3>
-              <p className="text-sm text-gray-600">{activity.description}</p>
-            </div>
+            <Card key={idx} className="transition hover:shadow-md">
+              <CardContent className="p-6 text-left">
+                <div className="mb-3">{activity.icon}</div>
+                <h3 className="text-lg font-bold text-gray-800 mb-2">{activity.title}</h3>
+                <p className="text-sm text-gray-600">{activity.description}</p>
+              </CardContent>
+            </Card>
           ))}
         </div>
       </div>

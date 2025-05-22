@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -34,7 +34,7 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialCarousel() {
+export function TestimonialCarousel() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {

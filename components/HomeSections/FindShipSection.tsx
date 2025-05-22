@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function FindShipSection() {
   return (
@@ -7,12 +8,9 @@ export default function FindShipSection() {
       <p className="text-gray-600 max-w-xl mx-auto mb-8">
         Enter your postcode or browse a map to find your nearest NTC unit.
       </p>
-      <Link
-        href="/ships"
-        className="bg-ntcBlue text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-blue-900 transition"
-      >
-        Find a Unit Near Me
-      </Link>
+      <Button asChild className="bg-ntcBlue hover:bg-blue-900 text-white rounded-xl">
+        <Link href="/ships">Find a Unit Near Me</Link>
+      </Button>
     </section>
   );
 }

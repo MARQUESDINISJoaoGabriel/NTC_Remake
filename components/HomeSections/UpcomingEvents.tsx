@@ -1,5 +1,8 @@
 "use client";
 
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
 const events = [
   {
     title: "Summer Camp 2025",
@@ -27,7 +30,7 @@ const events = [
   },
 ];
 
-export default function UpcomingEvents() {
+export function UpcomingEvents() {
   return (
     <section className="bg-white py-20 px-4 md:px-10">
       <div className="text-center mb-12">
@@ -39,19 +42,18 @@ export default function UpcomingEvents() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
         {events.map((event, idx) => (
-          <div
-            key={idx}
-            className="bg-gray-100 rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300"
-          >
-            <div className="text-sm text-gray-500 uppercase tracking-wide mb-1">
-              {event.date}
-            </div>
-            <h3 className="text-lg font-bold mb-2">{event.title}</h3>
-            <p className="text-sm text-gray-600 mb-4">{event.location}</p>
-            <span className="inline-block bg-ntcBlue text-white text-xs px-3 py-1 rounded-full">
-              {event.badge}
-            </span>
-          </div>
+          <Card key={idx} className="bg-gray-100">
+            <CardContent className="p-6">
+              <div className="text-sm text-gray-500 uppercase tracking-wide mb-1">
+                {event.date}
+              </div>
+              <h3 className="text-lg font-bold mb-2">{event.title}</h3>
+              <p className="text-sm text-gray-600 mb-4">{event.location}</p>
+              <Badge variant="default" className="bg-ntcBlue text-white">
+                {event.badge}
+              </Badge>
+            </CardContent>
+          </Card>
         ))}
       </div>
     </section>
