@@ -4,7 +4,7 @@
   "/activities/page": "app/activities/page.js",
   "/contact/page": "app/contact/page.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/find-ship/page": "app/find-ship/page.js",
+  "/join/page": "app/join/page.js",
   "/news/page": "app/news/page.js",
   "/page": "app/page.js",
   "/parents/page": "app/parents/page.js"

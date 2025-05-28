@@ -1,59 +1,48 @@
-"use client";
+import React from 'react';
+import { CalendarDays } from 'lucide-react';
 
 const events = [
   {
-    title: "Summer Camp 2025",
-    date: "July 22–28",
-    location: "Isle of Wight",
-    badge: "Overnight",
+    date: 'June 15, 2025',
+    title: 'Summer Leadership Camp',
+    description: 'A 3-day training event focused on leadership, survival skills, and team building.',
   },
   {
-    title: "National Band Parade",
-    date: "June 9",
-    location: "Portsmouth",
-    badge: "Public Event",
+    date: 'July 8, 2025',
+    title: 'National Parade in London',
+    description: 'Cadets from all over the UK will gather in central London for our official annual parade.',
   },
   {
-    title: "Sailing Regatta",
-    date: "August 12",
-    location: "Brighton Marina",
-    badge: "Competition",
-  },
-  {
-    title: "Cadet Open Day",
-    date: "May 31",
-    location: "Training Ship Aurora",
-    badge: "Try It!",
+    date: 'August 20, 2025',
+    title: 'Maritime Safety Workshop',
+    description: 'Learn about water safety, rescue protocols, and navigation basics.',
   },
 ];
 
-export default function UpcomingEvents() {
+const UpcomingEvents = () => {
   return (
-    <section className="bg-white py-20 px-4 md:px-10">
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold">Upcoming Events</h2>
-        <p className="text-gray-600 mt-2 max-w-md mx-auto">
-          Activities, camps, parades, and more — see what’s coming up soon.
-        </p>
-      </div>
+    <section className="bg-gray-50 py-16 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-blue-800 text-center mb-12">Upcoming Events</h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-        {events.map((event, idx) => (
-          <div
-            key={idx}
-            className="bg-gray-100 rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300"
-          >
-            <div className="text-sm text-gray-500 uppercase tracking-wide mb-1">
-              {event.date}
+        <div className="grid md:grid-cols-3 gap-8">
+          {events.map((event, idx) => (
+            <div
+              key={idx}
+              className="bg-white p-6 border rounded-lg shadow hover:shadow-lg transition"
+            >
+              <div className="flex items-center mb-4 text-blue-700">
+                <CalendarDays className="w-5 h-5 mr-2" />
+                <span className="text-sm">{event.date}</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
+              <p className="text-gray-600">{event.description}</p>
             </div>
-            <h3 className="text-lg font-bold mb-2">{event.title}</h3>
-            <p className="text-sm text-gray-600 mb-4">{event.location}</p>
-            <span className="inline-block bg-ntcBlue text-white text-xs px-3 py-1 rounded-full">
-              {event.badge}
-            </span>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default UpcomingEvents;

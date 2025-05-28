@@ -1,70 +1,59 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+'use client';
+import React, { useState, useEffect } from 'react';
 
 const testimonials = [
   {
-    name: "Charlie, age 11",
-    quote: "The Nautical Training Corps gave me the confidence to speak on parade and sail a boat!",
+    name: 'Emily R.',
+    text: "Joining the NTC was the best decision I’ve made. I learned discipline, built confidence, and made friends for life.",
+    role: 'Former Cadet – Portsmouth',
   },
   {
-    name: "Emily, age 15",
-    quote: "I made my best friends at summer camp. We still talk every day.",
+    name: 'James T.',
+    text: "The NTC gave my son purpose and pride. I couldn’t recommend it enough as a parent.",
+    role: 'Parent of Cadet – Brighton',
   },
   {
-    name: "Liam, age 13",
-    quote: "I love marching with the band and showing my badges to family.",
-  },
-  {
-    name: "Sophie, age 14",
-    quote: "The training helped me learn teamwork and leadership skills I use every day.",
-  },
-  {
-    name: "Jacob, age 12",
-    quote: "I never thought I'd love sailing so much. It’s the best part of my week!",
-  },
-  {
-    name: "Ava, age 16",
-    quote: "NTC made me feel part of a big family and taught me responsibility.",
-  },
-  {
-    name: "Ethan, age 10",
-    quote: "I look forward to every parade and camp. It’s so much fun!",
+    name: 'Aisha M.',
+    text: "It’s more than a youth group – it’s a community that supports and inspires you every step of the way.",
+    role: 'Current Cadet – London',
   },
 ];
 
-export default function TestimonialCarousel() {
-  const [index, setIndex] = useState(0);
+const TestimonialCarousel = () => {
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % testimonials.length);
+      setCurrent((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="bg-gray-100 py-16 px-4 text-center">
-      <h2 className="text-3xl font-bold mb-8">What Cadets Say</h2>
+    <section className="bg-gray-100 py-16 px-4 md:px-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl font-bold text-blue-800 mb-10">What People Say</h2>
 
-      <div className="max-w-2xl mx-auto relative h-40">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
-            className="text-xl italic text-gray-700"
-          >
-            “{testimonials[index].quote}”
-            <div className="mt-4 text-sm font-semibold text-ntcBlue">
-              – {testimonials[index].name}
-            </div>
-          </motion.div>
-        </AnimatePresence>
+        <div className="bg-white p-8 rounded-lg shadow-md transition duration-500">
+          <p className="text-gray-800 text-lg italic mb-4">“{testimonials[current].text}”</p>
+          <p className="text-blue-700 font-semibold">{testimonials[current].name}</p>
+          <p className="text-gray-500 text-sm">{testimonials[current].role}</p>
+        </div>
+
+        <div className="flex justify-center mt-6 space-x-2">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              className={`h-3 w-3 rounded-full transition ${
+                index === current ? 'bg-blue-600' : 'bg-gray-300'
+              }`}
+            ></button>
+          ))}
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default TestimonialCarousel;

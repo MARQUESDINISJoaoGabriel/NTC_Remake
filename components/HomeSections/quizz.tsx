@@ -1,212 +1,168 @@
 'use client';
-
-import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import {
-  Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
+import React, { useState } from 'react';
+import { Brain } from 'lucide-react';
 
 type Question = {
   question: string;
   options: string[];
-  answer: number;
+  answer: string;
 };
 
 const allQuestions: Question[] = [
   {
-    question: 'What is the main mission of the Nautical Training Corps (NTC)?',
-    options: [
-      'To train merchant navy officers',
-      'To provide nautical training and activities to young people',
-      'To organize cruises for the public',
-      'To offer sea rescue services',
-    ],
-    answer: 1,
+    question: 'What year was the NTC founded?',
+    options: ['1939', '1944', '1951', '1963'],
+    answer: '1944',
   },
   {
-    question: 'Where is the NTC primarily based?',
-    options: ['Scotland', 'Northern England', 'Southern England', 'Wales'],
-    answer: 2,
+    question: 'Which city is home to NTC headquarters?',
+    options: ['London', 'Brighton', 'Portsmouth', 'Bristol'],
+    answer: 'Portsmouth',
   },
   {
-    question: 'What is the legal status of the NTC?',
-    options: [
-      'Government organization',
-      'Private company',
-      'Non-governmental organization',
-      'Registered charity',
-    ],
-    answer: 3,
+    question: 'Which of these is a core NTC value?',
+    options: ['Chaos', 'Discipline', 'Selfishness', 'Greed'],
+    answer: 'Discipline',
   },
   {
-    question: 'What age range can join the NTC?',
-    options: ['5 to 12 years old', '7 to 18 years old', '10 to 20 years old', '12 to 25 years old'],
-    answer: 1,
+    question: 'What activity is NOT typically part of NTC training?',
+    options: ['Canoeing', 'Navigation', 'Skydiving', 'First Aid'],
+    answer: 'Skydiving',
   },
   {
-    question: 'When was the NTC founded?',
-    options: ['1932', '1944', '1951', '1967'],
-    answer: 1,
+    question: 'What does a cadet wear during a formal drill?',
+    options: ['Tracksuit', 'Combat uniform', 'Uniform', 'Casual clothes'],
+    answer: 'Uniform',
+  },
+  {
+    question: 'Which skill is common in NTC?',
+    options: ['Programming', 'Canoeing', 'Skiing', 'Sculpture'],
+    answer: 'Canoeing',
   },
 ];
 
-function getRandomQuestions(count: number) {
-  const shuffled = [...allQuestions].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, count);
+function shuffleArray<T>(array: T[]): T[] {
+  return [...array].sort(() => Math.random() - 0.5);
 }
 
-export default function Quizz() {
-  const [quizQuestions, setQuizQuestions] = useState<Question[]>([]);
-  const [current, setCurrent] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selected, setSelected] = useState<number | null>(null);
-  const [finished, setFinished] = useState(false);
-  const [showFeedback, setShowFeedback] = useState(false);
+const Quizz = () => {
   const [started, setStarted] = useState(false);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [current, setCurrent] = useState(0);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [score, setScore] = useState(0);
+  const [finished, setFinished] = useState(false);
+  const [showCorrection, setShowCorrection] = useState(false);
 
-  useEffect(() => {
-    if (started) {
-      setQuizQuestions(getRandomQuestions(5));
-      setCurrent(0);
-      setScore(0);
-      setSelected(null);
-      setFinished(false);
-      setShowFeedback(false);
-    }
-  }, [started]);
+  const startQuiz = () => {
+    const selectedQuestions = shuffleArray(allQuestions).slice(0, 5).map(q => ({
+      ...q,
+      options: shuffleArray(q.options),
+    }));
+    setQuestions(selectedQuestions);
+    setStarted(true);
+    setCurrent(0);
+    setSelected(null);
+    setScore(0);
+    setFinished(false);
+    setShowCorrection(false);
+  };
 
-  const currentQuestion = quizQuestions.length > 0 ? quizQuestions[current] : null;
-
-  const handleOptionClick = (index: number) => {
-    if (selected === null && currentQuestion) {
-      setSelected(index);
-      setShowFeedback(true);
-      if (index === currentQuestion.answer) {
-        setScore((prev) => prev + 1);
-      }
+  const handleSelect = (option: string) => {
+    if (selected) return;
+    setSelected(option);
+    setShowCorrection(true);
+    if (option === questions[current].answer) {
+      setScore(prev => prev + 1);
     }
   };
 
   const handleNext = () => {
-    if (current < quizQuestions.length - 1) {
-      setCurrent((prev) => prev + 1);
+    if (current + 1 < questions.length) {
+      setCurrent(prev => prev + 1);
       setSelected(null);
-      setShowFeedback(false);
+      setShowCorrection(false);
     } else {
       setFinished(true);
     }
   };
 
-  const handleRestart = () => {
-    setQuizQuestions(getRandomQuestions(5));
-    setCurrent(0);                            
-    setScore(0);                             
-    setSelected(null);                       
-    setFinished(false);                      
-    setShowFeedback(false);                
-    setStarted(true);                        
-  };
-
-  const getButtonStyle = (index: number) => {
-    if (!showFeedback) return 'bg-white';
-    if (currentQuestion && index === currentQuestion.answer) return 'bg-green-500 text-white';
-    if (index === selected) return 'bg-red-500 text-white';
-    return 'bg-white';
-  };
-
   return (
-    <Dialog onOpenChange={(open) => !open && setStarted(false)}>
-      <DialogTrigger asChild>
-        <div className="p-4 text-center" >
-          <h2 className="text-xl font-bold mb-4 ">Would you like to answer some questions?</h2>
-          <Button variant="default" className="mt-2 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50">Open NTC Quiz</Button>
+    <section className="bg-white py-16 px-4 md:px-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="flex justify-center mb-6">
+          <Brain className="w-12 h-12 text-blue-600" />
         </div>
-      </DialogTrigger>
 
-      <DialogContent className="sm:max-w-xl text-center">
-        <DialogHeader>
-          <DialogTitle>NTC Quiz</DialogTitle>
-        </DialogHeader>
-
-        {!started || !currentQuestion ? (
-          <div className="p-4">
-            <p className="mb-4">Click below to start the quiz!</p>
-            <Button onClick={() => setStarted(true)} className="mt-2 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50">Start</Button>
-          </div>
+        {!started ? (
+          <>
+            <h2 className="text-3xl font-bold text-blue-800 mb-4">Test Your Cadet Knowledge</h2>
+            <p className="text-gray-700 mb-8 max-w-xl mx-auto">
+              Each quiz randomly selects 5 questions. Pick the correct answer and see your score!
+            </p>
+            <button
+              onClick={startQuiz}
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+            >
+              Start the Quiz
+            </button>
+          </>
+        ) : finished ? (
+          <>
+            <h2 className="text-3xl font-bold text-blue-800 mb-4">Your Score: {score} / {questions.length}</h2>
+            <p className="text-gray-600 mb-6">Great job! Want to try again?</p>
+            <button
+              onClick={startQuiz}
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+            >
+              Restart Quiz
+            </button>
+          </>
         ) : (
-          <AnimatePresence mode="wait">
-            {!finished ? (
-              <motion.div
-                key={current}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.4 }}
-              >
-                <h2 className="text-lg font-bold mb-2">
-                  Question {current + 1} / {quizQuestions.length}
-                </h2>
-                <p className="mb-4">{currentQuestion.question}</p>
+          <>
+            <h2 className="text-xl font-semibold text-blue-700 mb-4">
+              Question {current + 1} of {questions.length}
+            </h2>
+            <h3 className="text-lg font-medium mb-6">{questions[current].question}</h3>
+            <div className="grid gap-4 mb-6">
+              {questions[current].options.map((opt) => {
+                let bgColor = 'bg-white text-gray-800';
+                if (showCorrection) {
+                  if (opt === questions[current].answer) {
+                    bgColor = 'bg-green-600 text-white';
+                  } else if (opt === selected && opt !== questions[current].answer) {
+                    bgColor = 'bg-red-500 text-white';
+                  }
+                } else if (selected === opt) {
+                  bgColor = 'bg-blue-600 text-white';
+                }
 
-                <div className="flex flex-col gap-2 mb-4">
-                  {currentQuestion.options.map((option, index) => (
-                    <motion.button
-                      key={index}
-                      onClick={() => handleOptionClick(index)}
-                      disabled={showFeedback}
-                      whileTap={{ scale: 0.95 }}
-                      whileHover={{ scale: 1.02 }}
-                      className={`p-2 rounded border transition-colors duration-200 ${getButtonStyle(index)}`}
-                    >
-                      {option}
-                    </motion.button>
-                  ))}
-                </div>
-
-                {showFeedback && (
-                  <motion.p
-                    className="mb-4"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                return (
+                  <button
+                    key={opt}
+                    onClick={() => handleSelect(opt)}
+                    disabled={!!selected}
+                    className={`px-4 py-2 border rounded ${bgColor} transition`}
                   >
-                    {selected === currentQuestion.answer
-                      ? '✅ Correct!'
-                      : '❌ Incorrect.'}
-                  </motion.p>
-                )}
+                    {opt}
+                  </button>
+                );
+              })}
+            </div>
 
-                <motion.button
-                  onClick={handleNext}
-                  disabled={!showFeedback}
-                  whileTap={{ scale: 0.95 }}
-                  className="mt-2 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50"
-                >
-                  {current < quizQuestions.length - 1 ? 'Next' : 'Finish'}
-                </motion.button>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="results"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
+            {showCorrection && (
+              <button
+                onClick={handleNext}
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
               >
-                <h2 className="text-2xl font-bold mb-4">Results</h2>
-                <p className="mb-4">
-                  You scored {score} out of {quizQuestions.length} correct!
-                </p>
-                <Button onClick={handleRestart} className="mt-2 px-4 py-2 bg-blue-600 text-white rounded disabled:opacity-50">Restart Quiz</Button>
-              </motion.div>
+                {current + 1 < questions.length ? 'Next' : 'Finish'}
+              </button>
             )}
-          </AnimatePresence>
+          </>
         )}
-      </DialogContent>
-    </Dialog>
+      </div>
+    </section>
   );
-}
+};
+
+export default Quizz;
