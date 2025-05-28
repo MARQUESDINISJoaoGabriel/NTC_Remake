@@ -9,7 +9,7 @@ import CadetPathSection from "@/components/HomeSections/CadetPathSection";
 import ActivitiesSection from "@/components/HomeSections/ActivitiesSection";
 import JoinNowSection from "@/components/HomeSections/JoinNowSection";
 import NewsPreview from "@/components/HomeSections/NewsPreview";
-import Quizz from "@/components/HomeSections/quizz";
+import Quizz from "@/components/HomeSections/Quizz";
 
 
 export default function Home() {
