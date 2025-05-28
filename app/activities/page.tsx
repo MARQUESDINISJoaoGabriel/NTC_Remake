@@ -4,6 +4,7 @@ import { Compass, Waves, Trophy, Users, Heart, Anchor } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Link from "next/link";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -246,6 +247,7 @@ export default function ActivitiesPage() {
       </motion.div>
 
       {/* Call to Action */}
+
       <motion.div 
         className="mt-20 text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -259,24 +261,29 @@ export default function ActivitiesPage() {
               Join thousands of young people who have discovered their potential through the NTC
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <motion.button 
-                className="bg-white text-ntcBlue px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Find Your Local Unit
-              </motion.button>
-              <motion.button 
-                className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-ntcBlue transition-all duration-200"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Contact Us
-              </motion.button>
+              <Link href="/find-ship">
+                <motion.div
+                  className="bg-white text-ntcBlue px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-200 text-center cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Find Your Local Unit
+                </motion.div>
+              </Link>
+              <Link href="/contact">
+                <motion.div
+                  className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-ntcBlue transition-all duration-200 text-center cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Contact Us
+                </motion.div>
+              </Link>
             </div>
           </CardContent>
         </Card>
       </motion.div>
+
     </main>
   );
 }

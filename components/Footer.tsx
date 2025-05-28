@@ -53,8 +53,8 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { href: "/", label: "Home" },
-                { href: "/#about", label: "About Us" },
-                { href: "/#activities", label: "Activities" },
+                { href: "/about", label: "About Us" },
+                { href: "/activities", label: "Activities" },
                 { href: "/news", label: "News" },
                 { href: "/find-ship", label: "Find a Ship" },
               ].map((link) => (
@@ -77,8 +77,6 @@ export default function Footer() {
               {[
                 { href: "/parents", label: "Parents" },
                 { href: "/contact", label: "Contact Us" },
-                { href: "/volunteer", label: "Volunteer" },
-                { href: "/donate", label: "Donate" },
                 { href: "/privacy", label: "Privacy Policy" },
               ].map((link) => (
                 <li key={link.href}>

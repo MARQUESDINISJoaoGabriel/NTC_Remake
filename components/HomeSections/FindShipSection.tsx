@@ -9,7 +9,7 @@ export default function FindShipSection() {
         Enter your postcode or browse a map to find your nearest NTC unit.
       </p>
       <Button asChild className="bg-ntcBlue hover:bg-blue-900 text-white rounded-xl">
-        <Link href="/ships">Find a Unit Near Me</Link>
+        <Link href="/find-ship">Find a Unit Near Me</Link>
       </Button>
     </section>
   );

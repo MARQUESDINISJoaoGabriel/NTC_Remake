@@ -270,11 +270,11 @@ function Footer() {
                                             label: "Home"
                                         },
                                         {
-                                            href: "/#about",
+                                            href: "/about",
                                             label: "About Us"
                                         },
                                         {
-                                            href: "/#activities",
+                                            href: "/activities",
                                             label: "Activities"
                                         },
                                         {
@@ -333,14 +333,6 @@ function Footer() {
                                             label: "Contact Us"
                                         },
                                         {
-                                            href: "/volunteer",
-                                            label: "Volunteer"
-                                        },
-                                        {
-                                            href: "/donate",
-                                            label: "Donate"
-                                        },
-                                        {
                                             href: "/privacy",
                                             label: "Privacy Policy"
                                         }
@@ -351,12 +343,12 @@ function Footer() {
                                                 children: link.label
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Footer.tsx",
-                                                lineNumber: 85,
+                                                lineNumber: 83,
                                                 columnNumber: 19
                                             }, this)
                                         }, link.href, false, {
                                             fileName: "[project]/components/Footer.tsx",
-                                            lineNumber: 84,
+                                            lineNumber: 82,
                                             columnNumber: 17
                                         }, this))
                                 }, void 0, false, {
@@ -388,7 +380,7 @@ function Footer() {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Footer.tsx",
-                            lineNumber: 99,
+                            lineNumber: 97,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -399,7 +391,7 @@ function Footer() {
                                     children: "Follow us:"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Footer.tsx",
-                                    lineNumber: 103,
+                                    lineNumber: 101,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -412,12 +404,12 @@ function Footer() {
                                                 children: "FB"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Footer.tsx",
-                                                lineNumber: 107,
+                                                lineNumber: 105,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Footer.tsx",
-                                            lineNumber: 106,
+                                            lineNumber: 104,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -427,30 +419,30 @@ function Footer() {
                                                 children: "TW"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Footer.tsx",
-                                                lineNumber: 110,
+                                                lineNumber: 108,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Footer.tsx",
-                                            lineNumber: 109,
+                                            lineNumber: 107,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Footer.tsx",
-                                    lineNumber: 104,
+                                    lineNumber: 102,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Footer.tsx",
-                            lineNumber: 102,
+                            lineNumber: 100,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Footer.tsx",
-                    lineNumber: 98,
+                    lineNumber: 96,
                     columnNumber: 9
                 }, this)
             ]

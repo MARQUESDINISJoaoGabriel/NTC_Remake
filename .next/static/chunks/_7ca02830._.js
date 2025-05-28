@@ -255,7 +255,9 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$re
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/card.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$badge$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/badge.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/ui/tabs.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-client] (ecmascript)");
 "use client";
+;
 ;
 ;
 ;
@@ -443,14 +445,14 @@ function ActivitiesPage() {
                                 className: "w-4 h-4 mr-2"
                             }, void 0, false, {
                                 fileName: "[project]/app/activities/page.tsx",
-                                lineNumber: 109,
+                                lineNumber: 110,
                                 columnNumber: 11
                             }, this),
                             "Adventure Awaits"
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/activities/page.tsx",
-                        lineNumber: 108,
+                        lineNumber: 109,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -458,7 +460,7 @@ function ActivitiesPage() {
                         children: "Activities for Cadets"
                     }, void 0, false, {
                         fileName: "[project]/app/activities/page.tsx",
-                        lineNumber: 112,
+                        lineNumber: 113,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -466,13 +468,13 @@ function ActivitiesPage() {
                         children: "From seamanship and sailing to leadership and community service, discover the exciting range of activities that make the NTC experience unforgettable."
                     }, void 0, false, {
                         fileName: "[project]/app/activities/page.tsx",
-                        lineNumber: 115,
+                        lineNumber: 116,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/activities/page.tsx",
-                lineNumber: 102,
+                lineNumber: 103,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -502,7 +504,7 @@ function ActivitiesPage() {
                                             className: "w-4 h-4"
                                         }, void 0, false, {
                                             fileName: "[project]/app/activities/page.tsx",
-                                            lineNumber: 134,
+                                            lineNumber: 135,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -510,18 +512,18 @@ function ActivitiesPage() {
                                             children: category.label
                                         }, void 0, false, {
                                             fileName: "[project]/app/activities/page.tsx",
-                                            lineNumber: 135,
+                                            lineNumber: 136,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, category.id, true, {
                                     fileName: "[project]/app/activities/page.tsx",
-                                    lineNumber: 129,
+                                    lineNumber: 130,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/app/activities/page.tsx",
-                            lineNumber: 127,
+                            lineNumber: 128,
                             columnNumber: 11
                         }, this),
                         categories.map((category)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$tabs$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TabsContent"], {
@@ -545,12 +547,12 @@ function ActivitiesPage() {
                                                                     className: "w-8 h-8 text-white"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/activities/page.tsx",
-                                                                    lineNumber: 155,
+                                                                    lineNumber: 156,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/activities/page.tsx",
-                                                                lineNumber: 154,
+                                                                lineNumber: 155,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
@@ -558,7 +560,7 @@ function ActivitiesPage() {
                                                                 children: activity.title
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/activities/page.tsx",
-                                                                lineNumber: 157,
+                                                                lineNumber: 158,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -569,18 +571,18 @@ function ActivitiesPage() {
                                                                     children: activity.difficulty
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/activities/page.tsx",
-                                                                    lineNumber: 161,
+                                                                    lineNumber: 162,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/activities/page.tsx",
-                                                                lineNumber: 160,
+                                                                lineNumber: 161,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/activities/page.tsx",
-                                                        lineNumber: 153,
+                                                        lineNumber: 154,
                                                         columnNumber: 25
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -590,7 +592,7 @@ function ActivitiesPage() {
                                                                 children: activity.description
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/activities/page.tsx",
-                                                                lineNumber: 167,
+                                                                lineNumber: 168,
                                                                 columnNumber: 27
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -600,7 +602,7 @@ function ActivitiesPage() {
                                                                         children: "Skills You'll Learn:"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/activities/page.tsx",
-                                                                        lineNumber: 171,
+                                                                        lineNumber: 172,
                                                                         columnNumber: 29
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -611,56 +613,56 @@ function ActivitiesPage() {
                                                                                 children: skill
                                                                             }, skillIndex, false, {
                                                                                 fileName: "[project]/app/activities/page.tsx",
-                                                                                lineNumber: 174,
+                                                                                lineNumber: 175,
                                                                                 columnNumber: 33
                                                                             }, this))
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/activities/page.tsx",
-                                                                        lineNumber: 172,
+                                                                        lineNumber: 173,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/activities/page.tsx",
-                                                                lineNumber: 170,
+                                                                lineNumber: 171,
                                                                 columnNumber: 27
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/activities/page.tsx",
-                                                        lineNumber: 166,
+                                                        lineNumber: 167,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/activities/page.tsx",
-                                                lineNumber: 152,
+                                                lineNumber: 153,
                                                 columnNumber: 23
                                             }, this)
                                         }, index, false, {
                                             fileName: "[project]/app/activities/page.tsx",
-                                            lineNumber: 151,
+                                            lineNumber: 152,
                                             columnNumber: 21
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/app/activities/page.tsx",
-                                    lineNumber: 142,
+                                    lineNumber: 143,
                                     columnNumber: 15
                                 }, this)
                             }, category.id, false, {
                                 fileName: "[project]/app/activities/page.tsx",
-                                lineNumber: 141,
+                                lineNumber: 142,
                                 columnNumber: 13
                             }, this))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/activities/page.tsx",
-                    lineNumber: 126,
+                    lineNumber: 127,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/activities/page.tsx",
-                lineNumber: 121,
+                lineNumber: 122,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -683,7 +685,7 @@ function ActivitiesPage() {
                         children: "Activities by Age Group"
                     }, void 0, false, {
                         fileName: "[project]/app/activities/page.tsx",
-                        lineNumber: 201,
+                        lineNumber: 202,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -734,7 +736,7 @@ function ActivitiesPage() {
                                                 className: `w-full h-2 rounded-full bg-gradient-to-r ${group.color} mb-4`
                                             }, void 0, false, {
                                                 fileName: "[project]/app/activities/page.tsx",
-                                                lineNumber: 228,
+                                                lineNumber: 229,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardTitle"], {
@@ -742,7 +744,7 @@ function ActivitiesPage() {
                                                 children: group.title
                                             }, void 0, false, {
                                                 fileName: "[project]/app/activities/page.tsx",
-                                                lineNumber: 229,
+                                                lineNumber: 230,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardDescription"], {
@@ -750,7 +752,7 @@ function ActivitiesPage() {
                                                 children: group.age
                                             }, void 0, false, {
                                                 fileName: "[project]/app/activities/page.tsx",
-                                                lineNumber: 230,
+                                                lineNumber: 231,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -758,13 +760,13 @@ function ActivitiesPage() {
                                                 children: group.focus
                                             }, void 0, false, {
                                                 fileName: "[project]/app/activities/page.tsx",
-                                                lineNumber: 231,
+                                                lineNumber: 232,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/activities/page.tsx",
-                                        lineNumber: 227,
+                                        lineNumber: 228,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$ui$2f$card$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -777,41 +779,41 @@ function ActivitiesPage() {
                                                             className: "w-2 h-2 bg-ntcBlue rounded-full"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/activities/page.tsx",
-                                                            lineNumber: 237,
+                                                            lineNumber: 238,
                                                             columnNumber: 23
                                                         }, this),
                                                         activity
                                                     ]
                                                 }, actIndex, true, {
                                                     fileName: "[project]/app/activities/page.tsx",
-                                                    lineNumber: 236,
+                                                    lineNumber: 237,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/activities/page.tsx",
-                                            lineNumber: 234,
+                                            lineNumber: 235,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/activities/page.tsx",
-                                        lineNumber: 233,
+                                        lineNumber: 234,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, index, true, {
                                 fileName: "[project]/app/activities/page.tsx",
-                                lineNumber: 226,
+                                lineNumber: 227,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/activities/page.tsx",
-                        lineNumber: 202,
+                        lineNumber: 203,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/activities/page.tsx",
-                lineNumber: 195,
+                lineNumber: 196,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -838,7 +840,7 @@ function ActivitiesPage() {
                                 children: "Ready to Start Your Adventure?"
                             }, void 0, false, {
                                 fileName: "[project]/app/activities/page.tsx",
-                                lineNumber: 257,
+                                lineNumber: 259,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -846,66 +848,80 @@ function ActivitiesPage() {
                                 children: "Join thousands of young people who have discovered their potential through the NTC"
                             }, void 0, false, {
                                 fileName: "[project]/app/activities/page.tsx",
-                                lineNumber: 258,
+                                lineNumber: 260,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex flex-col sm:flex-row gap-4 justify-center",
                                 children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
-                                        className: "bg-white text-ntcBlue px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-200",
-                                        whileHover: {
-                                            scale: 1.05
-                                        },
-                                        whileTap: {
-                                            scale: 0.95
-                                        },
-                                        children: "Find Your Local Unit"
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/find-ship",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                            className: "bg-white text-ntcBlue px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-200 text-center cursor-pointer",
+                                            whileHover: {
+                                                scale: 1.05
+                                            },
+                                            whileTap: {
+                                                scale: 0.95
+                                            },
+                                            children: "Find Your Local Unit"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/activities/page.tsx",
+                                            lineNumber: 265,
+                                            columnNumber: 17
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/activities/page.tsx",
-                                        lineNumber: 262,
+                                        lineNumber: 264,
                                         columnNumber: 15
                                     }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
-                                        className: "border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-ntcBlue transition-all duration-200",
-                                        whileHover: {
-                                            scale: 1.05
-                                        },
-                                        whileTap: {
-                                            scale: 0.95
-                                        },
-                                        children: "Contact Us"
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                        href: "/contact",
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
+                                            className: "border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-ntcBlue transition-all duration-200 text-center cursor-pointer",
+                                            whileHover: {
+                                                scale: 1.05
+                                            },
+                                            whileTap: {
+                                                scale: 0.95
+                                            },
+                                            children: "Contact Us"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/activities/page.tsx",
+                                            lineNumber: 274,
+                                            columnNumber: 17
+                                        }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/activities/page.tsx",
-                                        lineNumber: 269,
+                                        lineNumber: 273,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/activities/page.tsx",
-                                lineNumber: 261,
+                                lineNumber: 263,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/activities/page.tsx",
-                        lineNumber: 256,
+                        lineNumber: 258,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/app/activities/page.tsx",
-                    lineNumber: 255,
+                    lineNumber: 257,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/activities/page.tsx",
-                lineNumber: 249,
+                lineNumber: 251,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/activities/page.tsx",
-        lineNumber: 100,
+        lineNumber: 101,
         columnNumber: 5
     }, this);
 }

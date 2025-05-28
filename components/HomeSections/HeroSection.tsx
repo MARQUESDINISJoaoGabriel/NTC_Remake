@@ -26,7 +26,7 @@ export default function HeroSection() {
           Join the Nautical Training Corps – where future leaders learn discipline, skills, and teamwork.
         </p>
         <a
-          href="#why-join"
+          href="activities"
           className="inline-block bg-ntcBlue hover:bg-blue-900 transition px-6 py-3 rounded-full text-white text-sm font-semibold"
         >
           Find Out More
