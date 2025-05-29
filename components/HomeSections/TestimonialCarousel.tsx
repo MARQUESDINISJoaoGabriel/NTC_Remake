@@ -32,7 +32,40 @@ const testimonials = [
     name: "Ethan, age 10",
     quote: "I look forward to every parade and camp. It’s so much fun!",
   },
+  {
+    name: "Isla, age 13",
+    quote: "Before NTC, I was shy. Now I lead drills and help new cadets feel welcome.",
+  },
+  {
+    name: "Noah, age 14",
+    quote: "The boating weekends are amazing. I’ve learned how to navigate and tie proper knots.",
+  },
+  {
+    name: "Grace, age 12",
+    quote: "I earned my first badge last month and I’ve never been prouder!",
+  },
+  {
+    name: "Mason, age 15",
+    quote: "NTC taught me how to take responsibility and stay focused during challenges.",
+  },
+  {
+    name: "Lily, age 11",
+    quote: "My favourite memory is sailing during sunset with my squad. I’ll never forget it.",
+  },
+  {
+    name: "Oliver, age 13",
+    quote: "The band practices are loud, fun, and full of energy. I love every minute.",
+  },
+  {
+    name: "Freya, age 10",
+    quote: "Campfire nights, learning songs, and stories with friends are the best!",
+  },
+  {
+    name: "Harry, age 16",
+    quote: "NTC gave me real skills and a sense of purpose. I’m thinking of joining the Navy now.",
+  },
 ];
+
 
 export function TestimonialCarousel() {
   const [index, setIndex] = useState(0);
@@ -44,27 +77,27 @@ export function TestimonialCarousel() {
     return () => clearInterval(interval);
   }, []);
 
-  return (
-    <section className="bg-gray-100 py-16 px-4 text-center">
-      <h2 className="text-3xl font-bold mb-8">What Cadets Say</h2>
-
-      <div className="max-w-2xl mx-auto relative h-40">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
-            className="text-xl italic text-gray-700"
-          >
-            “{testimonials[index].quote}”
-            <div className="mt-4 text-sm font-semibold text-ntcBlue">
-              – {testimonials[index].name}
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    </section>
-  );
-}
+  return (  
+    <section className="bg-gray-100 py-16 px-4 text-center">  
+      <h2 className="text-3xl font-bold mb-8">What Cadets Say</h2>  
+    
+      <div className="max-w-2xl mx-auto relative h-40">   
+        <AnimatePresence mode="wait">   
+          <motion.div   
+            key={index}   
+            initial={{ opacity: 0, y: 20 }}   
+            animate={{ opacity: 1, y: 0 }}  
+            exit={{ opacity: 0, y: -20 }}   
+            transition={{ duration: 0.6 }}  
+            className="text-xl italic text-gray-700"  
+          >   
+            “{testimonials[index].quote}”   
+            <div className="mt-4 text-sm font-semibold text-ntcBlue">   
+              – {testimonials[index].name}  
+            </div>  
+          </motion.div>   
+        </AnimatePresence>  
+      </div>  
+    </section>  
+  );  
+}   

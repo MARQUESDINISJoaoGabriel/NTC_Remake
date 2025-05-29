@@ -1,52 +1,44 @@
-"use client";
+import React from 'react';
 
-import { Trophy, Star, Anchor, ShieldCheck } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-
-const ranks = [
+const pathSteps = [
   {
-    title: "New Entry",
-    description: "First step into the Corps — learn the basics, meet your team.",
-    icon: <Anchor className="w-6 h-6" />,
+    title: 'Step 1: Join as a Recruit',
+    description: 'New members begin their journey learning basic discipline, teamwork, and NTC values.',
   },
   {
-    title: "Junior Cadet",
-    description: "Begin training and earn your first badge in seamanship.",
-    icon: <Star className="w-6 h-6" />,
+    title: 'Step 2: Become a Cadet',
+    description: 'Cadets engage in regular drills, maritime skills training, and community activities.',
   },
   {
-    title: "Cadet",
-    description: "Take part in parades, learn navigation and water safety.",
-    icon: <ShieldCheck className="w-6 h-6" />,
+    title: 'Step 3: Senior Cadet',
+    description: 'Demonstrate leadership, assist with training new recruits, and take on responsibilities.',
   },
   {
-    title: "Leading Cadet",
-    description: "Lead drills, mentor juniors, and earn advanced badges.",
-    icon: <Trophy className="w-6 h-6" />,
+    title: 'Step 4: Cadet Officer',
+    description: 'Lead units, help plan events, and represent NTC at regional and national levels.',
   },
 ];
 
-export default function CadetPathSection() {
+const CadetPathSection = () => {
   return (
-    <section className="bg-white py-20 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-ntcBlue mb-4">Your Cadet Journey</h2>
-        <p className="text-gray-600 mb-12 max-w-xl mx-auto">
-          Grow through the ranks as you gain skills, confidence, and leadership.
-        </p>
+    <section className="bg-white py-16 px-4 md:px-8">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-blue-800 text-center mb-12">Cadet Progression Path</h2>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {ranks.map((rank, idx) => (
-            <Card key={idx} className="bg-blue-50 transition hover:shadow-md">
-              <CardContent className="p-6 text-left">
-                <div className="text-ntcBlue mb-3">{rank.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">{rank.title}</h3>
-                <p className="text-sm text-gray-600">{rank.description}</p>
-              </CardContent>
-            </Card>
+        <div className="grid gap-10 md:grid-cols-2">
+          {pathSteps.map((step, index) => (
+            <div
+              key={index}
+              className="border-l-4 border-blue-600 pl-6 relative before:absolute before:left-[-10px] before:top-[10px] before:w-4 before:h-4 before:rounded-full before:bg-blue-600"
+            >
+              <h3 className="text-xl font-semibold text-blue-700 mb-2">{step.title}</h3>
+              <p className="text-gray-700">{step.description}</p>
+            </div>
           ))}
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default CadetPathSection;

@@ -1,115 +1,168 @@
 'use client';
-
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Brain } from 'lucide-react';
 
 type Question = {
   question: string;
   options: string[];
-  answer: number;
+  answer: string;
 };
 
-const questions: Question[] = [
+const allQuestions: Question[] = [
   {
-    question: 'What is the main mission of the Nautical Training Corps (NTC)?',
-    options: [
-      'To train merchant navy officers',
-      'To provide nautical training and activities to young people',
-      'To organize cruises for the public',
-      'To offer sea rescue services',
-    ],
-    answer: 1,
+    question: 'What year was the NTC founded?',
+    options: ['1939', '1944', '1951', '1963'],
+    answer: '1944',
   },
   {
-    question: 'Where is the NTC primarily based?',
-    options: [
-      'Scotland',
-      'Northern England',
-      'Southern England',
-      'Wales',
-    ],
-    answer: 2,
+    question: 'Which city is home to NTC headquarters?',
+    options: ['London', 'Brighton', 'Portsmouth', 'Bristol'],
+    answer: 'Portsmouth',
   },
   {
-    question: 'What is the legal status of the NTC?',
-    options: [
-      'Government organization',
-      'Private company',
-      'Non-governmental organization',
-      'Registered charity',
-    ],
-    answer: 3,
+    question: 'Which of these is a core NTC value?',
+    options: ['Chaos', 'Discipline', 'Selfishness', 'Greed'],
+    answer: 'Discipline',
   },
   {
-    question: 'What age range can join the NTC?',
-    options: [
-      '5 to 12 years old',
-      '7 to 18 years old',
-      '10 to 20 years old',
-      '12 to 25 years old',
-    ],
-    answer: 1,
+    question: 'What activity is NOT typically part of NTC training?',
+    options: ['Canoeing', 'Navigation', 'Skydiving', 'First Aid'],
+    answer: 'Skydiving',
   },
   {
-    question: 'What is the name of one of NTC’s training ships mentioned on their site?',
-    options: [
-      'TS Courage',
-      'TS Tenacity',
-      'TS Victory',
-      'TS Endeavour',
-    ],
-    answer: 1,
+    question: 'What does a cadet wear during a formal drill?',
+    options: ['Tracksuit', 'Combat uniform', 'Uniform', 'Casual clothes'],
+    answer: 'Uniform',
+  },
+  {
+    question: 'Which skill is common in NTC?',
+    options: ['Programming', 'Canoeing', 'Skiing', 'Sculpture'],
+    answer: 'Canoeing',
   },
 ];
 
-export default function QuizPage() {
-  const [current, setCurrent] = useState(0);
-  const [score, setScore] = useState(0);
-  const [selected, setSelected] = useState<number | null>(null);
-  const [finished, setFinished] = useState(false);
+function shuffleArray<T>(array: T[]): T[] {
+  return [...array].sort(() => Math.random() - 0.5);
+}
 
-  const handleAnswer = () => {
-    if (selected === questions[current].answer) {
-      setScore(score + 1);
+const Quizz = () => {
+  const [started, setStarted] = useState(false);
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const [current, setCurrent] = useState(0);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [score, setScore] = useState(0);
+  const [finished, setFinished] = useState(false);
+  const [showCorrection, setShowCorrection] = useState(false);
+
+  const startQuiz = () => {
+    const selectedQuestions = shuffleArray(allQuestions).slice(0, 5).map(q => ({
+      ...q,
+      options: shuffleArray(q.options),
+    }));
+    setQuestions(selectedQuestions);
+    setStarted(true);
+    setCurrent(0);
+    setSelected(null);
+    setScore(0);
+    setFinished(false);
+    setShowCorrection(false);
+  };
+
+  const handleSelect = (option: string) => {
+    if (selected) return;
+    setSelected(option);
+    setShowCorrection(true);
+    if (option === questions[current].answer) {
+      setScore(prev => prev + 1);
     }
-    if (current < questions.length - 1) {
-      setCurrent(current + 1);
+  };
+
+  const handleNext = () => {
+    if (current + 1 < questions.length) {
+      setCurrent(prev => prev + 1);
       setSelected(null);
+      setShowCorrection(false);
     } else {
       setFinished(true);
     }
   };
 
   return (
-    <div className="p-6 max-w-xl mx-auto text-center">
-      {!finished ? (
-        <>
-          <h2 className="text-xl font-bold mb-4">Question {current + 1} / {questions.length}</h2>
-          <p className="mb-4">{questions[current].question}</p>
-          <div className="flex flex-col gap-2 mb-4">
-            {questions[current].options.map((option, index) => (
-              <button
-                key={index}
-                onClick={() => setSelected(index)}
-                className={`p-2 rounded border ${selected === index ? 'bg-blue-500 text-white' : 'bg-white'}`}
-              >
-                {option}
-              </button>
-            ))}
-          </div>
-          <button
-            onClick={handleAnswer}
-            disabled={selected === null}
-            className="mt-2 px-4 py-2 bg-green-600 text-white rounded disabled:opacity-50"
-          >
-            {current < questions.length - 1 ? 'Next' : 'Finish'}
-          </button>
-        </>
-      ) : (
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Results</h2>
-          <p>You scored {score} out of {questions.length} correct!</p>
+    <section className="bg-white py-16 px-4 md:px-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <div className="flex justify-center mb-6">
+          <Brain className="w-12 h-12 text-blue-600" />
         </div>
-      )}
-    </div>
+
+        {!started ? (
+          <>
+            <h2 className="text-3xl font-bold text-blue-800 mb-4">Test Your Cadet Knowledge</h2>
+            <p className="text-gray-700 mb-8 max-w-xl mx-auto">
+              Each quiz randomly selects 5 questions. Pick the correct answer and see your score!
+            </p>
+            <button
+              onClick={startQuiz}
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+            >
+              Start the Quiz
+            </button>
+          </>
+        ) : finished ? (
+          <>
+            <h2 className="text-3xl font-bold text-blue-800 mb-4">Your Score: {score} / {questions.length}</h2>
+            <p className="text-gray-600 mb-6">Great job! Want to try again?</p>
+            <button
+              onClick={startQuiz}
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+            >
+              Restart Quiz
+            </button>
+          </>
+        ) : (
+          <>
+            <h2 className="text-xl font-semibold text-blue-700 mb-4">
+              Question {current + 1} of {questions.length}
+            </h2>
+            <h3 className="text-lg font-medium mb-6">{questions[current].question}</h3>
+            <div className="grid gap-4 mb-6">
+              {questions[current].options.map((opt) => {
+                let bgColor = 'bg-white text-gray-800';
+                if (showCorrection) {
+                  if (opt === questions[current].answer) {
+                    bgColor = 'bg-green-600 text-white';
+                  } else if (opt === selected && opt !== questions[current].answer) {
+                    bgColor = 'bg-red-500 text-white';
+                  }
+                } else if (selected === opt) {
+                  bgColor = 'bg-blue-600 text-white';
+                }
+
+                return (
+                  <button
+                    key={opt}
+                    onClick={() => handleSelect(opt)}
+                    disabled={!!selected}
+                    className={`px-4 py-2 border rounded ${bgColor} transition`}
+                  >
+                    {opt}
+                  </button>
+                );
+              })}
+            </div>
+
+            {showCorrection && (
+              <button
+                onClick={handleNext}
+                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+              >
+                {current + 1 < questions.length ? 'Next' : 'Finish'}
+              </button>
+            )}
+          </>
+        )}
+      </div>
+    </section>
   );
-}
+};
+
+export default Quizz;
