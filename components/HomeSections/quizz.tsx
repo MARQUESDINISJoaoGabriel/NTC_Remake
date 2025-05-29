@@ -1,6 +1,14 @@
 'use client';
-import React, { useState } from 'react';
-import { Brain } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Brain, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
 
 type Question = {
   question: string;
@@ -45,7 +53,8 @@ function shuffleArray<T>(array: T[]): T[] {
   return [...array].sort(() => Math.random() - 0.5);
 }
 
-const Quizz = () => {
+const QuizDialog = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [started, setStarted] = useState(false);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [current, setCurrent] = useState(0);
@@ -53,6 +62,15 @@ const Quizz = () => {
   const [score, setScore] = useState(0);
   const [finished, setFinished] = useState(false);
   const [showCorrection, setShowCorrection] = useState(false);
+
+  // Auto-open dialog when component mounts
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(true);
+    }, 1000); // Delay of 1 second after page load
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const startQuiz = () => {
     const selectedQuestions = shuffleArray(allQuestions).slice(0, 5).map(q => ({
@@ -87,82 +105,195 @@ const Quizz = () => {
     }
   };
 
+  const handleClose = () => {
+    setIsOpen(false);
+    // Reset quiz state when closing
+    setStarted(false);
+    setFinished(false);
+    setSelected(null);
+    setShowCorrection(false);
+    setCurrent(0);
+    setScore(0);
+  };
+
+  const reopenQuiz = () => {
+    setIsOpen(true);
+  };
+
   return (
-    <section className="bg-white py-16 px-4 md:px-8">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="flex justify-center mb-6">
-          <Brain className="w-12 h-12 text-blue-600" />
-        </div>
+    <>
+      {/* Button to reopen quiz if needed */}
+      {!isOpen && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="fixed bottom-6 right-6 z-40"
+        >
+          <Button
+            onClick={reopenQuiz}
+            className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg"
+            size="lg"
+          >
+            <Brain className="w-6 h-6" />
+          </Button>
+        </motion.div>
+      )}
 
-        {!started ? (
-          <>
-            <h2 className="text-3xl font-bold text-blue-800 mb-4">Test Your Cadet Knowledge</h2>
-            <p className="text-gray-700 mb-8 max-w-xl mx-auto">
-              Each quiz randomly selects 5 questions. Pick the correct answer and see your score!
-            </p>
-            <button
-              onClick={startQuiz}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-            >
-              Start the Quiz
-            </button>
-          </>
-        ) : finished ? (
-          <>
-            <h2 className="text-3xl font-bold text-blue-800 mb-4">Your Score: {score} / {questions.length}</h2>
-            <p className="text-gray-600 mb-6">Great job! Want to try again?</p>
-            <button
-              onClick={startQuiz}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
-            >
-              Restart Quiz
-            </button>
-          </>
-        ) : (
-          <>
-            <h2 className="text-xl font-semibold text-blue-700 mb-4">
-              Question {current + 1} of {questions.length}
-            </h2>
-            <h3 className="text-lg font-medium mb-6">{questions[current].question}</h3>
-            <div className="grid gap-4 mb-6">
-              {questions[current].options.map((opt) => {
-                let bgColor = 'bg-white text-gray-800';
-                if (showCorrection) {
-                  if (opt === questions[current].answer) {
-                    bgColor = 'bg-green-600 text-white';
-                  } else if (opt === selected && opt !== questions[current].answer) {
-                    bgColor = 'bg-red-500 text-white';
-                  }
-                } else if (selected === opt) {
-                  bgColor = 'bg-blue-600 text-white';
-                }
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center justify-center gap-3 text-2xl text-blue-800">
+              <Brain className="w-8 h-8 text-blue-600" />
+              NTC Cadet Knowledge Quiz
+            </DialogTitle>
+          </DialogHeader>
 
-                return (
-                  <button
-                    key={opt}
-                    onClick={() => handleSelect(opt)}
-                    disabled={!!selected}
-                    className={`px-4 py-2 border rounded ${bgColor} transition`}
-                  >
-                    {opt}
-                  </button>
-                );
-              })}
-            </div>
-
-            {showCorrection && (
-              <button
-                onClick={handleNext}
-                className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+          <AnimatePresence mode="wait">
+            {!started ? (
+              <motion.div
+                key="start"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                className="text-center py-6"
               >
-                {current + 1 < questions.length ? 'Next' : 'Finish'}
-              </button>
+                <p className="text-gray-700 mb-8 max-w-xl mx-auto">
+                  Test your knowledge about the Naval Training Corps! Each quiz randomly selects 5 questions. 
+                  Pick the correct answer and see your score!
+                </p>
+                <Button
+                  onClick={startQuiz}
+                  className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3"
+                  size="lg"
+                >
+                  Start the Quiz
+                </Button>
+              </motion.div>
+            ) : finished ? (
+              <motion.div
+                key="finished"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                className="text-center py-6"
+              >
+                <motion.div
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+                  className="mb-6"
+                >
+                  <div className="text-4xl font-bold text-blue-800 mb-2">
+                    {score} / {questions.length}
+                  </div>
+                  <div className="text-lg text-gray-600">
+                    {score === questions.length ? "Perfect Score! 🎉" : 
+                     score >= questions.length * 0.8 ? "Great Job! 👏" :
+                     score >= questions.length * 0.6 ? "Good Effort! 👍" :
+                     "Keep Learning! 📚"}
+                  </div>
+                </motion.div>
+                <div className="flex gap-4 justify-center">
+                  <Button
+                    onClick={startQuiz}
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
+                  >
+                    Try Again
+                  </Button>
+                  <Button
+                    onClick={handleClose}
+                    variant="outline"
+                    className="border-blue-600 text-blue-600 hover:bg-blue-50"
+                  >
+                    Close
+                  </Button>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key={`question-${current}`}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                className="py-6"
+              >
+                <div className="mb-6">
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="text-sm font-medium text-blue-600">
+                      Question {current + 1} of {questions.length}
+                    </span>
+                    <div className="w-24 h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <motion.div
+                        className="h-full bg-blue-600"
+                        initial={{ width: 0 }}
+                        animate={{ width: `${((current + 1) / questions.length) * 100}%` }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-6">
+                    {questions[current].question}
+                  </h3>
+                </div>
+
+                <div className="grid gap-3 mb-6">
+                  {questions[current].options.map((opt, index) => {
+                    let buttonClasses = 'p-4 text-left border-2 rounded-lg transition-all duration-200 ';
+                    
+                    if (showCorrection) {
+                      if (opt === questions[current].answer) {
+                        buttonClasses += 'bg-green-100 border-green-500 text-green-800';
+                      } else if (opt === selected && opt !== questions[current].answer) {
+                        buttonClasses += 'bg-red-100 border-red-500 text-red-800';
+                      } else {
+                        buttonClasses += 'bg-gray-50 border-gray-200 text-gray-600';
+                      }
+                    } else if (selected === opt) {
+                      buttonClasses += 'bg-blue-100 border-blue-500 text-blue-800';
+                    } else {
+                      buttonClasses += 'bg-white border-gray-200 text-gray-800 hover:border-blue-300 hover:bg-blue-50';
+                    }
+
+                    return (
+                      <motion.button
+                        key={opt}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        onClick={() => handleSelect(opt)}
+                        disabled={!!selected}
+                        className={buttonClasses}
+                      >
+                        <span className="font-medium">{String.fromCharCode(65 + index)}.</span> {opt}
+                      </motion.button>
+                    );
+                  })}
+                </div>
+
+                <AnimatePresence>
+                  {showCorrection && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      className="text-center"
+                    >
+                      <Button
+                        onClick={handleNext}
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2"
+                      >
+                        {current + 1 < questions.length ? 'Next Question' : 'See Results'}
+                      </Button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             )}
-          </>
-        )}
-      </div>
-    </section>
+          </AnimatePresence>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 
-export default Quizz;
+export default QuizDialog;

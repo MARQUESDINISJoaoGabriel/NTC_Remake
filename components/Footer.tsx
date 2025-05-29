@@ -78,6 +78,7 @@ export default function Footer() {
                 { href: "/parents", label: "Parents" },
                 { href: "/contact", label: "Contact Us" },
                 { href: "/privacy", label: "Privacy Policy" },
+                { href: "admin/login", label: "Admin"},
               ].map((link) => (
                 <li key={link.href}>
                   <Link 

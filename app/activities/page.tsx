@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Compass, Waves, Trophy, Users, Heart, Anchor } from "lucide-react";
+import { Compass, Waves, Trophy, Users, Heart, Anchor, Star, Ship } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -24,81 +24,75 @@ export default function ActivitiesPage() {
   const activities = [
     {
       icon: Anchor,
-      title: "Drill and Discipline",
-      description: "Drill training develops discipline, teamwork, and respect for naval customs, forming a key part of cadet life.",
+      title: "Drill & Ceremonial Training",
+      description: "Master precision drill movements and ceremonial procedures that build discipline, teamwork, and respect for naval traditions. Develop the sharp coordination skills that set NTC cadets apart.",
       skills: ["Parade Drill", "Naval Traditions", "Team Coordination", "Self-Discipline"],
       difficulty: "Beginner",
-      category: "training",
-      color: "from-blue-500 to-blue-600"
+      category: "training"
     },
     {
       icon: Compass,
-      title: "Seamanship and Navigation",
-      description: "Cadets learn boating, navigation, map reading, and compass skills, following a curriculum inspired by Merchant Navy traditions.",
+      title: "Navigation & Seamanship",
+      description: "Learn essential maritime navigation skills including chart reading, compass work, and coastal navigation. Develop the technical expertise that forms the backbone of professional seamanship.",
       skills: ["Chart Reading", "Compass Navigation", "Boat Handling", "Maritime Law"],
       difficulty: "Intermediate",
-      category: "seamanship",
-      color: "from-green-500 to-green-600"
+      category: "seamanship"
     },
     {
       icon: Waves,
-      title: "Sailing and Watersports",
-      description: "Practical sailing lessons and watersports at the NSTC Lion and local Ships introduce cadets to real maritime experiences.",
-      skills: ["Dinghy Sailing", "Powerboating", "Water Safety", "Weather Reading"],
+      title: "Sailing & Watersports",
+      description: "Experience the thrill of sailing while developing practical boat handling skills. From dinghy sailing to powerboating, master the water in all conditions and build real confidence on the waves.",
+      skills: ["Dinghy Sailing", "Powerboat Operations", "Water Safety", "Weather Assessment"],
       difficulty: "All Levels",
-      category: "water",
-      color: "from-cyan-500 to-blue-500"
+      category: "water"
     },
     {
       icon: Trophy,
-      title: "Camps and Competitions",
-      description: "Summer camps and competitions such as the National Band & Colour Competition build camaraderie and allow cadets to showcase skills.",
-      skills: ["Competition Drill", "Band Performance", "Team Leadership", "Event Planning"],
+      title: "Competitions & Events",
+      description: "Compete at regional and national levels, showcasing your skills in drill, seamanship, and band competitions. Experience the intensity of competition while representing your unit with pride.",
+      skills: ["Competition Performance", "Band & Music", "Team Leadership", "Event Organization"],
       difficulty: "Advanced",
-      category: "events",
-      color: "from-purple-500 to-purple-600"
+      category: "events"
     },
     {
       icon: Heart,
-      title: "Community Service and Events",
-      description: "Participation in maritime heritage visits, Founder's Day parades, and community projects fosters pride and responsibility.",
-      skills: ["Public Speaking", "Event Organization", "Community Engagement", "Heritage Knowledge"],
+      title: "Community Service",
+      description: "Make a real difference in your community through organized service projects, heritage events, and public ceremonies. Develop civic responsibility while representing the values of the NTC.",
+      skills: ["Public Speaking", "Event Planning", "Community Engagement", "Heritage Knowledge"],
       difficulty: "All Levels",
-      category: "community",
-      color: "from-pink-500 to-red-500"
+      category: "community"
     },
     {
       icon: Users,
       title: "Leadership Development",
-      description: "Advanced cadets take on leadership roles, mentoring younger members and organizing unit activities.",
+      description: "Take on real responsibility as you progress through the ranks. Mentor younger cadets, organize activities, and develop the leadership skills that will serve you throughout your life.",
       skills: ["Team Management", "Public Speaking", "Decision Making", "Mentoring"],
       difficulty: "Advanced",
-      category: "leadership",
-      color: "from-orange-500 to-red-500"
+      category: "leadership"
     }
   ];
 
   const categories = [
-    { id: "all", label: "All Activities", icon: Anchor },
+    { id: "all", label: "All Activities", icon: Star },
     { id: "training", label: "Training", icon: Anchor },
     { id: "seamanship", label: "Seamanship", icon: Compass },
-    { id: "water", label: "Water Sports", icon: Waves },
-    { id: "events", label: "Events", icon: Trophy },
+    { id: "water", label: "Watersports", icon: Waves },
+    { id: "events", label: "Competitions", icon: Trophy },
     { id: "community", label: "Community", icon: Heart },
     { id: "leadership", label: "Leadership", icon: Users }
   ];
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case "Beginner": return "bg-green-100 text-green-800 border-green-200";
-      case "Intermediate": return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "Advanced": return "bg-red-100 text-red-800 border-red-200";
-      default: return "bg-blue-100 text-blue-800 border-blue-200";
+      case "Beginner": return "bg-blue-50 text-blue-800 border-blue-200";
+      case "Intermediate": return "bg-yellow-50 text-yellow-800 border-yellow-200";
+      case "Advanced": return "bg-red-50 text-red-800 border-red-200";
+      default: return "bg-gray-50 text-gray-800 border-gray-200";
     }
   };
 
   return (
-    <main className="max-w-7xl mx-auto px-6 py-20">
+    <main className="max-w-7xl mx-auto px-6 py-16">
       {/* Hero Section */}
       <motion.div 
         className="text-center mb-16"
@@ -106,15 +100,18 @@ export default function ActivitiesPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        <Badge variant="outline" className="mb-4 text-ntcBlue border-ntcBlue">
-          <Waves className="w-4 h-4 mr-2" />
-          Adventure Awaits
-        </Badge>
-        <h1 className="text-5xl font-bold text-ntcBlue mb-6 bg-gradient-to-r from-ntcBlue to-blue-600 bg-clip-text text-transparent">
-          Activities for Cadets
+        <div className="bg-blue-50 border border-blue-200 rounded-full px-6 py-2 inline-flex items-center gap-2 mb-6">
+          <Anchor className="w-5 h-5 text-blue-600" />
+          <span className="text-blue-800 font-semibold">Discover Your Potential</span>
+        </div>
+        
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 text-blue-900">
+          Activities & Training
         </h1>
-        <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          From seamanship and sailing to leadership and community service, discover the exciting range of activities that make the NTC experience unforgettable.
+        
+        <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+          Challenge yourself with diverse activities that build real skills, lasting friendships, and 
+          the confidence to tackle anything life throws your way.
         </p>
       </motion.div>
 
@@ -125,12 +122,12 @@ export default function ActivitiesPage() {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <Tabs defaultValue="all" className="mb-12">
-          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-7 mb-8">
+          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-7 mb-8 bg-gray-100 p-2 rounded-lg">
             {categories.map((category) => (
               <TabsTrigger 
                 key={category.id} 
                 value={category.id}
-                className="flex items-center gap-2 text-xs lg:text-sm"
+                className="flex items-center gap-2 text-xs lg:text-sm rounded-md data-[state=active]:bg-white data-[state=active]:text-blue-800 data-[state=active]:shadow-sm transition-all duration-300"
               >
                 <category.icon className="w-4 h-4" />
                 <span className="hidden sm:inline">{category.label}</span>
@@ -150,32 +147,32 @@ export default function ActivitiesPage() {
                   .filter(activity => category.id === "all" || activity.category === category.id)
                   .map((activity, index) => (
                     <motion.div key={index} variants={fadeInUp}>
-                      <Card className="h-full hover:shadow-xl transition-all duration-500 hover:scale-[1.02] border-2 hover:border-ntcBlue/20 group">
+                      <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105 border border-gray-200 group bg-white rounded-lg overflow-hidden">
                         <CardHeader className="pb-4">
-                          <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${activity.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                            <activity.icon className="w-8 h-8 text-white" />
+                          <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center mb-4 group-hover:bg-blue-700 transition-colors duration-300">
+                            <activity.icon className="w-6 h-6 text-white" />
                           </div>
-                          <CardTitle className="text-xl text-slate-800 group-hover:text-ntcBlue transition-colors">
+                          <CardTitle className="text-xl text-blue-900 group-hover:text-blue-700 transition-colors font-bold">
                             {activity.title}
                           </CardTitle>
                           <div className="flex items-center gap-2">
-                            <Badge variant="outline" className={getDifficultyColor(activity.difficulty)}>
+                            <Badge variant="outline" className={`${getDifficultyColor(activity.difficulty)} text-xs px-3 py-1 rounded-full border`}>
                               {activity.difficulty}
                             </Badge>
                           </div>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-slate-600 leading-relaxed mb-6">
+                          <p className="text-gray-700 leading-relaxed mb-6">
                             {activity.description}
                           </p>
                           <div>
-                            <h4 className="font-semibold text-slate-800 mb-3">Skills You'll Learn:</h4>
+                            <h4 className="font-semibold text-blue-900 mb-3">Skills You'll Develop:</h4>
                             <div className="flex flex-wrap gap-2">
                               {activity.skills.map((skill, skillIndex) => (
                                 <Badge 
                                   key={skillIndex} 
                                   variant="secondary" 
-                                  className="text-xs bg-slate-100 text-slate-700 hover:bg-slate-200"
+                                  className="text-xs bg-blue-50 text-blue-700 border border-blue-200 rounded-md px-2 py-1"
                                 >
                                   {skill}
                                 </Badge>
@@ -199,44 +196,49 @@ export default function ActivitiesPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">Activities by Age Group</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-blue-900 mb-4">
+            Progression by Age Group
+          </h2>
+          <p className="text-xl text-gray-600">Structured development pathways for every stage</p>
+        </div>
+        
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
               title: "Junior Cadets",
               age: "7-11 years",
-              focus: "Fun, games, and basic seamanship",
-              activities: ["Basic drill", "Knot tying", "Maritime stories", "Team games"],
-              color: "from-green-400 to-green-500"
+              focus: "Foundation skills and introduction to maritime activities",
+              activities: ["Basic drill training", "Knot work & seamanship", "Maritime heritage", "Team building exercises"],
+              color: "border-blue-200 bg-blue-50"
             },
             {
               title: "Cadets",
               age: "12-15 years",
-              focus: "Skill development and adventure",
-              activities: ["Navigation training", "Sailing courses", "Leadership roles", "Competitions"],
-              color: "from-blue-400 to-blue-500"
+              focus: "Skill development and practical application",
+              activities: ["Advanced navigation", "Sailing proficiency", "Leadership opportunities", "Competition participation"],
+              color: "border-yellow-200 bg-yellow-50"
             },
             {
               title: "Senior Cadets",
               age: "16-18 years",
-              focus: "Leadership and advanced training",
-              activities: ["Officer training", "Teaching juniors", "Advanced sailing", "Event planning"],
-              color: "from-purple-400 to-purple-500"
+              focus: "Leadership roles and advanced training",
+              activities: ["Officer training", "Junior instructor roles", "Advanced qualifications", "Event coordination"],
+              color: "border-red-200 bg-red-50"
             }
           ].map((group, index) => (
-            <Card key={index} className="hover:shadow-lg transition-all duration-300 border-2 hover:border-ntcBlue/20">
+            <Card key={index} className={`hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 ${group.color} rounded-lg overflow-hidden`}>
               <CardHeader>
-                <div className={`w-full h-2 rounded-full bg-gradient-to-r ${group.color} mb-4`}></div>
-                <CardTitle className="text-xl text-slate-800">{group.title}</CardTitle>
-                <CardDescription className="text-lg font-semibold text-ntcBlue">{group.age}</CardDescription>
-                <p className="text-slate-600">{group.focus}</p>
+                <CardTitle className="text-xl text-blue-900 font-bold">{group.title}</CardTitle>
+                <CardDescription className="text-lg font-semibold text-gray-700">{group.age}</CardDescription>
+                <p className="text-gray-600">{group.focus}</p>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2">
                   {group.activities.map((activity, actIndex) => (
-                    <li key={actIndex} className="flex items-center gap-2 text-slate-700">
-                      <div className="w-2 h-2 bg-ntcBlue rounded-full"></div>
-                      {activity}
+                    <li key={actIndex} className="flex items-center gap-3 text-gray-700">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                      <span>{activity}</span>
                     </li>
                   ))}
                 </ul>
@@ -247,23 +249,41 @@ export default function ActivitiesPage() {
       </motion.div>
 
       {/* Call to Action */}
-
       <motion.div 
         className="mt-20 text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        <Card className="bg-gradient-to-br from-ntcBlue to-blue-600 text-white border-0">
-          <CardContent className="py-12">
-            <h2 className="text-3xl font-bold mb-4">Ready to Start Your Adventure?</h2>
-            <p className="text-xl mb-8 text-blue-100">
-              Join thousands of young people who have discovered their potential through the NTC
+        <Card className="bg-blue-900 text-white border-0 rounded-lg overflow-hidden relative">
+          {/* Background pattern */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10">
+              <Anchor className="w-16 h-16" />
+            </div>
+            <div className="absolute bottom-10 right-10">
+              <Waves className="w-20 h-20" />
+            </div>
+            <div className="absolute top-10 right-10">
+              <Ship className="w-14 h-14" />
+            </div>
+          </div>
+          
+          <CardContent className="py-16 relative z-10">
+            <div className="flex justify-center items-center gap-4 mb-6">
+              <Anchor className="w-8 h-8 text-yellow-400" />
+              <Ship className="w-8 h-8 text-white" />
+              <Waves className="w-8 h-8 text-yellow-400" />
+            </div>
+            <h2 className="text-4xl font-bold mb-6">Ready to Take on the Challenge?</h2>
+            <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
+              Join thousands of young people who've discovered their potential through the NTC. 
+              Every skill you learn, every challenge you overcome, shapes who you become.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link href="/find-ship">
                 <motion.div
-                  className="bg-white text-ntcBlue px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-200 text-center cursor-pointer"
+                  className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-300 transition-all duration-300 text-center cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -272,18 +292,20 @@ export default function ActivitiesPage() {
               </Link>
               <Link href="/contact">
                 <motion.div
-                  className="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-ntcBlue transition-all duration-200 text-center cursor-pointer"
+                  className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition-all duration-300 text-center cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Contact Us
+                  Get More Information
                 </motion.div>
               </Link>
+            </div>
+            <div className="mt-6 text-blue-200">
+              Your journey starts here
             </div>
           </CardContent>
         </Card>
       </motion.div>
-
     </main>
   );
 }
