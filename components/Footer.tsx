@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Twitter, Mail, MapPin, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -100,13 +100,24 @@ export default function Footer() {
           <div className="flex items-center gap-4 mt-4 md:mt-0">
             <span className="text-slate-400 text-sm">Follow us:</span>
             <div className="flex gap-2">
-              {/* Social media icons can be added here */}
-              <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                <span className="text-xs">FB</span>
-              </div>
-              <div className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer">
-                <span className="text-xs">TW</span>
-              </div>
+              <a
+                href="https://www.facebook.com/TheNauticalTrainingCorps/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4 text-white" />
+              </a>
+              <a
+                href="https://x.com/1ntc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 bg-slate-700 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-4 h-4 text-white" />
+              </a>
             </div>
           </div>
         </div>
