@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Compass, Waves, Trophy, Users, Heart, Anchor, Star, Ship, Zap } from "lucide-react";
+import { Compass, Waves, Trophy, Users, Heart, Anchor, Star, Ship } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -24,136 +24,112 @@ export default function ActivitiesPage() {
   const activities = [
     {
       icon: Anchor,
-      title: "Drill & Being Awesome Together! 💪",
-      description: "Learn super cool parade moves, work as an amazing team, and discover what it feels like to be part of something special! It's like synchronized swimming but on land! 🌟",
-      skills: ["Epic Parade Moves", "Naval Traditions", "Team Power!", "Self-Discipline"],
+      title: "Drill & Ceremonial Training",
+      description: "Master precision drill movements and ceremonial procedures that build discipline, teamwork, and respect for naval traditions. Develop the sharp coordination skills that set NTC cadets apart.",
+      skills: ["Parade Drill", "Naval Traditions", "Team Coordination", "Self-Discipline"],
       difficulty: "Beginner",
-      category: "training",
-      color: "from-blue-500 to-purple-600",
-      emoji: "⚓"
+      category: "training"
     },
     {
       icon: Compass,
-      title: "Navigation & Sea Smarts! 🧭",
-      description: "Become a real-life treasure hunter! Learn to read maps, use compasses, and navigate like the legendary sailors of old. You'll feel like a maritime detective! 🕵️‍♀️",
-      skills: ["Treasure Map Reading", "Compass Magic", "Boat Mastery", "Sea Rules"],
+      title: "Navigation & Seamanship",
+      description: "Learn essential maritime navigation skills including chart reading, compass work, and coastal navigation. Develop the technical expertise that forms the backbone of professional seamanship.",
+      skills: ["Chart Reading", "Compass Navigation", "Boat Handling", "Maritime Law"],
       difficulty: "Intermediate",
-      category: "seamanship",
-      color: "from-green-500 to-emerald-600",
-      emoji: "🗺️"
+      category: "seamanship"
     },
     {
       icon: Waves,
-      title: "Sailing & Epic Water Fun! 🌊",
-      description: "Get ready to splash into adventure! Learn to sail like a pro, race through the waves, and discover why the water is our second home. Pure aquatic awesomeness! 💦",
-      skills: ["Sailing Like a Pro", "Powerboat Racing", "Water Ninja Skills", "Weather Wisdom"],
+      title: "Sailing & Watersports",
+      description: "Experience the thrill of sailing while developing practical boat handling skills. From dinghy sailing to powerboating, master the water in all conditions and build real confidence on the waves.",
+      skills: ["Dinghy Sailing", "Powerboat Operations", "Water Safety", "Weather Assessment"],
       difficulty: "All Levels",
-      category: "water",
-      color: "from-cyan-500 to-blue-600",
-      emoji: "⛵"
+      category: "water"
     },
     {
       icon: Trophy,
-      title: "Competitions & Camp Adventures! 🏆",
-      description: "Summer camps that are pure magic and competitions where you can show off your amazing skills! Make memories that'll last forever and friendships that are unbreakable! ✨",
-      skills: ["Competition Champion", "Band Rockstar", "Team Captain", "Event Master"],
+      title: "Competitions & Events",
+      description: "Compete at regional and national levels, showcasing your skills in drill, seamanship, and band competitions. Experience the intensity of competition while representing your unit with pride.",
+      skills: ["Competition Performance", "Band & Music", "Team Leadership", "Event Organization"],
       difficulty: "Advanced",
-      category: "events",
-      color: "from-purple-500 to-pink-600",
-      emoji: "🎉"
+      category: "events"
     },
     {
       icon: Heart,
-      title: "Community Heroes & Fun Events! ❤️",
-      description: "Be a real-life superhero in your community! Join parades, help others, and show everyone how awesome NTC cadets are. Making the world better, one adventure at a time! 🦸‍♂️",
-      skills: ["Public Speaking Pro", "Event Planning", "Community Champion", "History Detective"],
+      title: "Community Service",
+      description: "Make a real difference in your community through organized service projects, heritage events, and public ceremonies. Develop civic responsibility while representing the values of the NTC.",
+      skills: ["Public Speaking", "Event Planning", "Community Engagement", "Heritage Knowledge"],
       difficulty: "All Levels",
-      category: "community",
-      color: "from-pink-500 to-red-600",
-      emoji: "🌟"
+      category: "community"
     },
     {
       icon: Users,
-      title: "Leadership & Becoming Amazing! 👑",
-      description: "Ready to become the leader you were born to be? Guide younger cadets, organize epic activities, and discover your inner superhero powers! Leadership has never been this fun! 🚀",
-      skills: ["Team Leadership", "Amazing Speaking", "Smart Decisions", "Mentoring Magic"],
+      title: "Leadership Development",
+      description: "Take on real responsibility as you progress through the ranks. Mentor younger cadets, organize activities, and develop the leadership skills that will serve you throughout your life.",
+      skills: ["Team Management", "Public Speaking", "Decision Making", "Mentoring"],
       difficulty: "Advanced",
-      category: "leadership",
-      color: "from-orange-500 to-red-600",
-      emoji: "👑"
+      category: "leadership"
     }
   ];
 
   const categories = [
-    { id: "all", label: "All Adventures", icon: Star, emoji: "🌟" },
-    { id: "training", label: "Training Fun", icon: Anchor, emoji: "⚓" },
-    { id: "seamanship", label: "Sea Skills", icon: Compass, emoji: "🧭" },
-    { id: "water", label: "Water Fun", icon: Waves, emoji: "🌊" },
-    { id: "events", label: "Epic Events", icon: Trophy, emoji: "🎉" },
-    { id: "community", label: "Hero Work", icon: Heart, emoji: "❤️" },
-    { id: "leadership", label: "Leadership", icon: Users, emoji: "👑" }
+    { id: "all", label: "All Activities", icon: Star },
+    { id: "training", label: "Training", icon: Anchor },
+    { id: "seamanship", label: "Seamanship", icon: Compass },
+    { id: "water", label: "Watersports", icon: Waves },
+    { id: "events", label: "Competitions", icon: Trophy },
+    { id: "community", label: "Community", icon: Heart },
+    { id: "leadership", label: "Leadership", icon: Users }
   ];
 
   const getDifficultyColor = (difficulty: string) => {
     switch (difficulty) {
-      case "Beginner": return "bg-green-200 text-green-800 border-green-300 font-bold";
-      case "Intermediate": return "bg-yellow-200 text-yellow-800 border-yellow-300 font-bold";
-      case "Advanced": return "bg-red-200 text-red-800 border-red-300 font-bold";
-      default: return "bg-blue-200 text-blue-800 border-blue-300 font-bold";
+      case "Beginner": return "bg-blue-50 text-blue-800 border-blue-200";
+      case "Intermediate": return "bg-yellow-50 text-yellow-800 border-yellow-200";
+      case "Advanced": return "bg-red-50 text-red-800 border-red-200";
+      default: return "bg-gray-50 text-gray-800 border-gray-200";
     }
   };
 
   return (
     <main className="max-w-7xl mx-auto px-6 py-16">
-      {/* Fun Hero Section */}
+      {/* Hero Section */}
       <motion.div 
-        className="text-center mb-16 relative"
+        className="text-center mb-16"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
-        {/* Floating fun elements */}
-        <div className="absolute top-0 left-10 animate-bounce">
-          <div className="bg-yellow-400 rounded-full p-3">
-            <Star className="w-6 h-6 text-blue-800" />
-          </div>
-        </div>
-        <div className="absolute top-10 right-10 animate-pulse">
-          <div className="bg-pink-400 rounded-full p-3">
-            <Heart className="w-6 h-6 text-purple-800" />
-          </div>
+        <div className="bg-blue-50 border border-blue-200 rounded-full px-6 py-2 inline-flex items-center gap-2 mb-6">
+          <Anchor className="w-5 h-5 text-blue-600" />
+          <span className="text-blue-800 font-semibold">Discover Your Potential</span>
         </div>
         
-        <div className="bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 rounded-full px-6 py-3 inline-flex items-center gap-2 mb-6">
-          <Waves className="w-5 h-5 text-blue-600" />
-          <span className="text-blue-800 font-bold">Epic Adventures Await! 🚀</span>
-        </div>
-        
-        <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-          Amazing Activities for <span className="text-yellow-500">YOU!</span> 🎉
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 text-blue-900">
+          Activities & Training
         </h1>
         
         <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-          Get ready for the most incredible adventures ever! From sailing the seas to becoming 
-          an awesome leader, we've got activities that'll make you go "WOW!" every single time! ⚓✨
+          Challenge yourself with diverse activities that build real skills, lasting friendships, and 
+          the confidence to tackle anything life throws your way.
         </p>
       </motion.div>
 
-      {/* Fun Activity Categories Tabs */}
+      {/* Activity Categories Tabs */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <Tabs defaultValue="all" className="mb-12">
-          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-7 mb-8 bg-gradient-to-r from-blue-100 to-purple-100 p-2 rounded-2xl">
+          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-7 mb-8 bg-gray-100 p-2 rounded-lg">
             {categories.map((category) => (
               <TabsTrigger 
                 key={category.id} 
                 value={category.id}
-                className="flex items-center gap-2 text-xs lg:text-sm rounded-xl data-[state=active]:bg-white data-[state=active]:text-blue-800 data-[state=active]:font-bold transition-all duration-300 hover:scale-105"
+                className="flex items-center gap-2 text-xs lg:text-sm rounded-md data-[state=active]:bg-white data-[state=active]:text-blue-800 data-[state=active]:shadow-sm transition-all duration-300"
               >
-                <span className="text-lg">{category.emoji}</span>
+                <category.icon className="w-4 h-4" />
                 <span className="hidden sm:inline">{category.label}</span>
               </TabsTrigger>
             ))}
@@ -171,37 +147,34 @@ export default function ActivitiesPage() {
                   .filter(activity => category.id === "all" || activity.category === category.id)
                   .map((activity, index) => (
                     <motion.div key={index} variants={fadeInUp}>
-                      <Card className="h-full hover:shadow-2xl transition-all duration-500 hover:scale-105 border-3 hover:border-purple-300 group bg-gradient-to-br from-white to-blue-50 rounded-2xl overflow-hidden">
-                        <CardHeader className="pb-4 relative">
-                          <div className="absolute top-4 right-4 text-3xl animate-bounce">
-                            {activity.emoji}
+                      <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105 border border-gray-200 group bg-white rounded-lg overflow-hidden">
+                        <CardHeader className="pb-4">
+                          <div className="w-12 h-12 rounded-lg bg-blue-600 flex items-center justify-center mb-4 group-hover:bg-blue-700 transition-colors duration-300">
+                            <activity.icon className="w-6 h-6 text-white" />
                           </div>
-                          <div className={`w-20 h-20 rounded-3xl bg-gradient-to-br ${activity.color} flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg`}>
-                            <activity.icon className="w-10 h-10 text-white" />
-                          </div>
-                          <CardTitle className="text-xl text-blue-800 group-hover:text-purple-600 transition-colors font-bold">
+                          <CardTitle className="text-xl text-blue-900 group-hover:text-blue-700 transition-colors font-bold">
                             {activity.title}
                           </CardTitle>
                           <div className="flex items-center gap-2">
-                            <Badge variant="outline" className={`${getDifficultyColor(activity.difficulty)} text-xs px-3 py-1 rounded-full`}>
-                              {activity.difficulty} ⭐
+                            <Badge variant="outline" className={`${getDifficultyColor(activity.difficulty)} text-xs px-3 py-1 rounded-full border`}>
+                              {activity.difficulty}
                             </Badge>
                           </div>
                         </CardHeader>
                         <CardContent>
-                          <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+                          <p className="text-gray-700 leading-relaxed mb-6">
                             {activity.description}
                           </p>
                           <div>
-                            <h4 className="font-bold text-blue-800 mb-3 text-lg">Super Cool Skills You'll Learn:</h4>
+                            <h4 className="font-semibold text-blue-900 mb-3">Skills You'll Develop:</h4>
                             <div className="flex flex-wrap gap-2">
                               {activity.skills.map((skill, skillIndex) => (
                                 <Badge 
                                   key={skillIndex} 
                                   variant="secondary" 
-                                  className="text-xs bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 hover:bg-gradient-to-r hover:from-purple-100 hover:to-pink-100 border border-blue-200 rounded-full px-3 py-1 font-medium"
+                                  className="text-xs bg-blue-50 text-blue-700 border border-blue-200 rounded-md px-2 py-1"
                                 >
-                                  {skill} ✨
+                                  {skill}
                                 </Badge>
                               ))}
                             </div>
@@ -216,7 +189,7 @@ export default function ActivitiesPage() {
         </Tabs>
       </motion.div>
 
-      {/* Fun Age Groups Section */}
+      {/* Age Groups Section */}
       <motion.div 
         className="mt-20"
         initial={{ opacity: 0, y: 20 }}
@@ -224,58 +197,48 @@ export default function ActivitiesPage() {
         transition={{ duration: 0.8, delay: 0.4 }}
       >
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-blue-800 mb-4">
-            Adventures for <span className="text-purple-600">Every Age!</span> 🎂
+          <h2 className="text-4xl font-bold text-blue-900 mb-4">
+            Progression by Age Group
           </h2>
-          <p className="text-xl text-gray-600">No matter how old you are, we've got the perfect adventure waiting for you!</p>
+          <p className="text-xl text-gray-600">Structured development pathways for every stage</p>
         </div>
         
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              title: "Little Adventurers! 🌟",
+              title: "Junior Cadets",
               age: "7-11 years",
-              focus: "Fun, games, and magical first steps into seamanship!",
-              activities: ["Super fun drill games", "Amazing knot tricks", "Epic maritime stories", "Awesome team adventures"],
-              color: "from-green-400 to-emerald-500",
-              emoji: "🎮",
-              bgGradient: "from-green-50 to-emerald-100"
+              focus: "Foundation skills and introduction to maritime activities",
+              activities: ["Basic drill training", "Knot work & seamanship", "Maritime heritage", "Team building exercises"],
+              color: "border-blue-200 bg-blue-50"
             },
             {
-              title: "Adventure Masters! 🚀",
+              title: "Cadets",
               age: "12-15 years",
-              focus: "Skill building and incredible adventures await!",
-              activities: ["Navigation wizardry", "Sailing like pros", "Leadership superpowers", "Epic competitions"],
-              color: "from-blue-400 to-cyan-500",
-              emoji: "⚡",
-              bgGradient: "from-blue-50 to-cyan-100"
+              focus: "Skill development and practical application",
+              activities: ["Advanced navigation", "Sailing proficiency", "Leadership opportunities", "Competition participation"],
+              color: "border-yellow-200 bg-yellow-50"
             },
             {
-              title: "Future Leaders! 👑",
+              title: "Senior Cadets",
               age: "16-18 years",
-              focus: "Leadership mastery and advanced epic training!",
-              activities: ["Officer training academy", "Teaching little ones", "Advanced sailing mastery", "Event planning genius"],
-              color: "from-purple-400 to-pink-500",
-              emoji: "🎯",
-              bgGradient: "from-purple-50 to-pink-100"
+              focus: "Leadership roles and advanced training",
+              activities: ["Officer training", "Junior instructor roles", "Advanced qualifications", "Event coordination"],
+              color: "border-red-200 bg-red-50"
             }
           ].map((group, index) => (
-            <Card key={index} className={`hover:shadow-2xl transition-all duration-500 hover:scale-105 border-3 hover:border-purple-300 bg-gradient-to-br ${group.bgGradient} rounded-2xl overflow-hidden`}>
-              <CardHeader className="relative">
-                <div className="absolute top-4 right-4 text-4xl animate-pulse">
-                  {group.emoji}
-                </div>
-                <div className={`w-full h-3 rounded-full bg-gradient-to-r ${group.color} mb-6 shadow-lg`}></div>
-                <CardTitle className="text-2xl text-blue-800 font-bold">{group.title}</CardTitle>
-                <CardDescription className="text-xl font-bold text-purple-600">{group.age}</CardDescription>
-                <p className="text-gray-700 text-lg font-medium">{group.focus}</p>
+            <Card key={index} className={`hover:shadow-lg transition-all duration-300 hover:scale-105 border-2 ${group.color} rounded-lg overflow-hidden`}>
+              <CardHeader>
+                <CardTitle className="text-xl text-blue-900 font-bold">{group.title}</CardTitle>
+                <CardDescription className="text-lg font-semibold text-gray-700">{group.age}</CardDescription>
+                <p className="text-gray-600">{group.focus}</p>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
+                <ul className="space-y-2">
                   {group.activities.map((activity, actIndex) => (
-                    <li key={actIndex} className="flex items-center gap-3 text-gray-800 text-lg">
-                      <div className="w-3 h-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
-                      <span className="font-medium">{activity}</span>
+                    <li key={actIndex} className="flex items-center gap-3 text-gray-700">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                      <span>{activity}</span>
                     </li>
                   ))}
                 </ul>
@@ -285,65 +248,60 @@ export default function ActivitiesPage() {
         </div>
       </motion.div>
 
-      {/* Epic Call to Action */}
+      {/* Call to Action */}
       <motion.div 
-        className="mt-20 text-center relative"
+        className="mt-20 text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        {/* Fun floating elements around CTA */}
-        <div className="absolute -top-6 left-1/4 animate-bounce">
-          <div className="bg-yellow-400 rounded-full p-2">
-            <Zap className="w-5 h-5 text-purple-800" />
-          </div>
-        </div>
-        <div className="absolute -top-6 right-1/4 animate-bounce delay-1000">
-          <div className="bg-pink-400 rounded-full p-2">
-            <Ship className="w-5 h-5 text-blue-800" />
-          </div>
-        </div>
-        
-        <Card className="bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 text-white border-0 rounded-3xl overflow-hidden relative">
+        <Card className="bg-blue-900 text-white border-0 rounded-lg overflow-hidden relative">
           {/* Background pattern */}
-          <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 opacity-10">
             <div className="absolute top-10 left-10">
               <Anchor className="w-16 h-16" />
             </div>
             <div className="absolute bottom-10 right-10">
               <Waves className="w-20 h-20" />
             </div>
+            <div className="absolute top-10 right-10">
+              <Ship className="w-14 h-14" />
+            </div>
           </div>
           
           <CardContent className="py-16 relative z-10">
-            <div className="text-6xl mb-6">🚀⚓🌊</div>
-            <h2 className="text-4xl font-bold mb-6">Ready to Start Your EPIC Adventure?</h2>
-            <p className="text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              Join thousands of amazing young adventurers who've discovered their superpowers through the NTC! 
-              Your incredible journey starts NOW! 🌟
+            <div className="flex justify-center items-center gap-4 mb-6">
+              <Anchor className="w-8 h-8 text-yellow-400" />
+              <Ship className="w-8 h-8 text-white" />
+              <Waves className="w-8 h-8 text-yellow-400" />
+            </div>
+            <h2 className="text-4xl font-bold mb-6">Ready to Take on the Challenge?</h2>
+            <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
+              Join thousands of young people who've discovered their potential through the NTC. 
+              Every skill you learn, every challenge you overcome, shapes who you become.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link href="/find-ship">
                 <motion.div
-                  className="bg-white text-purple-600 px-10 py-4 rounded-full font-bold hover:shadow-2xl transition-all duration-300 text-center cursor-pointer text-xl border-4 border-yellow-400"
-                  whileHover={{ scale: 1.1, rotate: 2 }}
+                  className="bg-yellow-400 text-blue-900 px-8 py-3 rounded-lg font-bold hover:bg-yellow-300 transition-all duration-300 text-center cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  🗺️ Find Your Adventure Base!
+                  Find Your Local Unit
                 </motion.div>
               </Link>
               <Link href="/contact">
                 <motion.div
-                  className="border-4 border-white text-white px-10 py-4 rounded-full font-bold hover:bg-white hover:text-purple-600 transition-all duration-300 text-center cursor-pointer text-xl"
-                  whileHover={{ scale: 1.1, rotate: -2 }}
+                  className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-blue-900 transition-all duration-300 text-center cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  💬 Let's Chat!
+                  Get More Information
                 </motion.div>
               </Link>
             </div>
-            <div className="mt-8 text-yellow-300 text-lg font-medium">
-              ✨ Adventure is calling... will you answer? ✨
+            <div className="mt-6 text-blue-200">
+              Your journey starts here
             </div>
           </CardContent>
         </Card>
