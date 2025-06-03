@@ -1,6 +1,7 @@
+// MAIN WEBSITE - app/news/[id]/page.tsx
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowLeft, Star, Anchor, Share2, Bookmark, Trophy, Users, Heart, Compass } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,58 +10,26 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-// Mock news data - replace with your actual data import
-const newsItems = [
-  {
-    id: "1",
-    title: "Summer Camp 2024 - Outstanding Success",
-    date: "2024-08-15",
-    summary: "Our cadets achieved exceptional results at this year's summer camp. From advanced sailing techniques to leadership development, participants demonstrated remarkable progress in all areas of training.",
-    category: "events",
-    featured: true,
-    readTime: "3 min",
-    content: `The 2024 NTC Summer Camp has concluded with outstanding success, bringing together cadets from across the UK for an intensive week of maritime training and personal development.
+interface NewsArticle {
+  id: string;
+  title: string;
+  date: string;
+  summary: string;
+  content: string;
+  category: string;
+  featured: boolean;
+  readTime: string;
+}
 
-## Program Highlights
-
-**Day 1 - Orientation & Team Building**
-The week commenced with comprehensive orientation sessions and structured team-building activities. New and returning cadets were integrated through carefully designed exercises that established strong group dynamics from the outset.
-
-**Day 2 - Advanced Sailing Training**
-Sailing instruction progressed from foundational techniques to advanced maneuvers. Instructors noted exceptional skill development across all experience levels, with beginners mastering basic sailing principles and experienced cadets advancing to complex navigation techniques.
-
-**Day 3 - Leadership Development**
-Cadets participated in challenging leadership scenarios including navigation exercises and team coordination tasks. The activities emphasized problem-solving, communication, and decision-making under pressure.
-
-**Day 4 - Community Service Project**
-Environmental stewardship took center stage with a coordinated beach conservation effort. The project collected significant amounts of marine debris while reinforcing the NTC's commitment to environmental responsibility.
-
-**Day 5 - Skills Assessment & Recognition**
-The final day featured comprehensive skills demonstrations, allowing cadets to showcase their newly acquired competencies. Recognition ceremonies highlighted individual achievements and team accomplishments.
-
-## Personal Development Outcomes
-
-The camp's structured environment facilitated significant personal growth among participants. Cadets developed increased confidence, enhanced leadership capabilities, and strengthened peer relationships that extend beyond the training period.
-
-One participant reflected: "The experience challenged me to develop skills I didn't know I possessed. The combination of technical training and leadership development has given me confidence that will benefit me in all areas of life."
-
-## Looking Forward
-
-Planning for the 2025 summer camp is already underway, with enhancements based on this year's successful outcomes. The program continues to evolve while maintaining its core focus on maritime excellence and character development.
-
-Interested cadets should contact their local Training Ship for information about future camp opportunities and preparation requirements.`
-  },
-  {
-    id: "2",
-    title: "New Training Ships Join Our Fleet",
-    date: "2024-07-28",
-    summary: "Three new Training Ships have officially joined the NTC network. TS Victory, TS Adventure, and TS Explorer are already operational with dedicated cadets and experienced officers.",
-    category: "news",
-    featured: false,
-    readTime: "2 min",
-    content: "Full content for article 2..."
-  }
-];
+interface RelatedArticle {
+  id: string;
+  title: string;
+  date: string;
+  summary: string;
+  category: string;
+  featured: boolean;
+  readTime: string;
+}
 
 const categories = [
   { id: "events", label: "Events", icon: Calendar },
@@ -69,6 +38,9 @@ const categories = [
   { id: "community", label: "Community", icon: Heart },
   { id: "news", label: "General News", icon: Compass }
 ];
+
+// CHANGE THIS TO YOUR ADMIN WEBSITE URL
+const ADMIN_API_URL = process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:3001';
 
 const getCategoryInfo = (category: string) => {
   const cat = categories.find(c => c.id === category);
@@ -88,8 +60,76 @@ const getTimeAgo = (dateString: string) => {
 };
 
 export default function NewsArticlePage({ params }: { params: { id: string } }) {
-  const article = newsItems.find((n) => n.id === params.id);
-  if (!article) return notFound();
+  const [article, setArticle] = useState<NewsArticle | null>(null);
+  const [relatedArticles, setRelatedArticles] = useState<RelatedArticle[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchArticle = async () => {
+      try {
+        setLoading(true);
+        
+        // Fetch the main article
+        const articleResponse = await fetch(`${ADMIN_API_URL}/api/public/news/${params.id}`);
+        if (articleResponse.status === 404) {
+          notFound();
+          return;
+        }
+        if (!articleResponse.ok) {
+          throw new Error('Failed to fetch article');
+        }
+        
+        const articleData = await articleResponse.json();
+        setArticle(articleData);
+        
+        // Fetch related articles (limited to 2)
+        const relatedResponse = await fetch(`${ADMIN_API_URL}/api/public/news?limit=4`);
+        if (relatedResponse.ok) {
+          const relatedData = await relatedResponse.json();
+          // Filter out current article and limit to 2
+          const filtered = relatedData
+            .filter((item: RelatedArticle) => item.id !== params.id)
+            .slice(0, 2);
+          setRelatedArticles(filtered);
+        }
+        
+        setError(null);
+      } catch (err) {
+        setError('Failed to load article');
+        console.error('Error fetching article:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticle();
+  }, [params.id]);
+
+  if (loading) {
+    return (
+      <main className="max-w-4xl mx-auto px-6 py-16">
+        <div className="text-center py-16">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading article...</p>
+        </div>
+      </main>
+    );
+  }
+
+  if (error || !article) {
+    return (
+      <main className="max-w-4xl mx-auto px-6 py-16">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-red-600 mb-4">Error Loading Article</h1>
+          <p className="text-gray-600">{error || 'Article not found'}</p>
+          <Link href="/news">
+            <Button className="mt-4">Back to News</Button>
+          </Link>
+        </div>
+      </main>
+    );
+  }
 
   const categoryInfo = getCategoryInfo(article.category);
 
@@ -231,23 +271,21 @@ export default function NewsArticlePage({ params }: { params: { id: string } }) 
         </motion.div>
 
         {/* Related Stories */}
-        <motion.div
-          className="mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          <Card className="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-blue-900 mb-6 flex items-center gap-3">
-                <Star className="w-6 h-6 text-yellow-500" />
-                Related Stories
-              </h3>
-              <div className="grid md:grid-cols-2 gap-6">
-                {newsItems
-                  .filter(item => item.id !== article.id)
-                  .slice(0, 2)
-                  .map((relatedArticle) => (
+        {relatedArticles.length > 0 && (
+          <motion.div
+            className="mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Card className="bg-gray-50 border border-gray-200 rounded-lg overflow-hidden">
+              <CardContent className="p-8">
+                <h3 className="text-2xl font-bold text-blue-900 mb-6 flex items-center gap-3">
+                  <Star className="w-6 h-6 text-yellow-500" />
+                  Related Stories
+                </h3>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {relatedArticles.map((relatedArticle) => (
                     <Link key={relatedArticle.id} href={`/news/${relatedArticle.id}`}>
                       <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 bg-white border border-gray-200 rounded-lg">
                         <CardContent className="p-6">
@@ -275,10 +313,11 @@ export default function NewsArticlePage({ params }: { params: { id: string } }) 
                       </Card>
                     </Link>
                   ))}
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
+        )}
       </motion.article>
     </main>
   );
