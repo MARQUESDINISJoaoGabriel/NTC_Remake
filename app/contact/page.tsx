@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Clock, CheckCircle, Send, User, Star, Anchor } from "lucide-react";
+import { MapPin, Mail, Phone, Clock, CheckCircle, Send, User, Star} from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,7 +9,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Badge } from "@/components/ui/badge";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -34,16 +33,16 @@ export default function ContactPage() {
   };
   
   const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    age: '',
-    ntcExperience: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    age: "",
+    ntcExperience: "",
     interestedDivisions: [],
-    parentGuardianName: '',
-    hearAboutUs: '',
-    message: '',
+    parentGuardianName: "",
+    hearAboutUs: "",
+    message: "",
     newsletter: false,
     dataConsent: false,
   });
@@ -98,9 +97,9 @@ export default function ContactPage() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -202,8 +201,8 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-blue-900 mb-2">{info.title}</h3>
                     {info.details.map((detail, detailIndex) => (
                       <p key={detailIndex} className="text-gray-700 mb-1">
-                        {detail.includes('@') ? (
-                          <a href={`mailto:${detail.split(': ')[1] || detail}`} className="text-blue-600 hover:text-blue-700 hover:underline">
+                        {detail.includes("@") ? (
+                          <a href={`mailto:${detail.split(": ")[1] || detail}`} className="text-blue-600 hover:text-blue-700 hover:underline">
                             {detail}
                           </a>
                         ) : (
@@ -281,7 +280,7 @@ export default function ContactPage() {
                   Get in Touch
                 </CardTitle>
                 <CardDescription className="text-blue-100">
-                  Complete this form to contact us. We'll respond promptly and help you take the next steps.
+                  Complete this form to contact us. We"ll respond promptly and help you take the next steps.
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">

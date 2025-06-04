@@ -1,7 +1,7 @@
-'use client';
+"use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X} from "lucide-react";
 import Image from "next/image";
 
 export default function Navbar() {
@@ -12,8 +12,8 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const links = [
@@ -29,8 +29,8 @@ export default function Navbar() {
   return (
     <nav className={`sticky top-0 z-50 transition-all duration-300 ${
       isScrolled 
-        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-slate-200' 
-        : 'bg-white shadow-md'
+        ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-slate-200" 
+        : "bg-white shadow-md"
     }`}>
       <div className="w-full px-4 py-4 relative flex items-center">
         {/* Logo & Title - fully left */}
@@ -60,7 +60,7 @@ export default function Navbar() {
         {/* Desktop Menu - perfectly centered */}
         <div className="hidden lg:flex justify-center w-full">
           <div className="flex items-center gap-1 bg-slate-50 rounded-full px-2 py-1 border border-slate-200">
-            {links.map((link, index) => (
+            {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -91,8 +91,8 @@ export default function Navbar() {
             aria-label="Toggle menu"
           >
             <div className="relative">
-              <Menu size={24} className={`transition-all duration-300 ${isOpen ? 'rotate-90 opacity-0' : 'rotate-0 opacity-100'}`} />
-              <X size={24} className={`absolute inset-0 transition-all duration-300 ${isOpen ? 'rotate-0 opacity-100' : '-rotate-90 opacity-0'}`} />
+              <Menu size={24} className={`transition-all duration-300 ${isOpen ? "rotate-90 opacity-0" : "rotate-0 opacity-100"}`} />
+              <X size={24} className={`absolute inset-0 transition-all duration-300 ${isOpen ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"}`} />
             </div>
           </button>
         </div>
@@ -100,7 +100,7 @@ export default function Navbar() {
 
       {/* Mobile menu below navbar */}
       <div className={`lg:hidden overflow-hidden transition-all duration-300 ${
-        isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
       }`}>
         <div className="bg-white/95 backdrop-blur-md shadow-lg py-4 px-4 flex flex-col gap-1 border-t border-slate-200">
           {links.map((link, index) => (

@@ -33,7 +33,7 @@ const staggerContainer = {
 };
 
 // CHANGE THIS TO YOUR ADMIN WEBSITE URL
-const ADMIN_API_URL = process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:3001';
+const ADMIN_API_URL = process.env.NEXT_PUBLIC_ADMIN_API_URL;
 
 export default function NewsPage() {
   const [selectedCategory, setSelectedCategory] = useState("all");
@@ -59,15 +59,15 @@ export default function NewsPage() {
         const response = await fetch(`${ADMIN_API_URL}/api/public/news${categoryParam}`);
         
         if (!response.ok) {
-          throw new Error('Failed to fetch news');
+          throw new Error("Failed to fetch news");
         }
         
         const data = await response.json();
         setNewsItems(data);
         setError(null);
       } catch (err) {
-        setError('Failed to load news articles');
-        console.error('Error fetching news:', err);
+        setError("Failed to load news articles");
+        console.error("Error fetching news:", err);
       } finally {
         setLoading(false);
       }
@@ -239,8 +239,8 @@ export default function NewsPage() {
                 onClick={() => setSelectedCategory(category.id)}
                 className={`rounded-lg px-6 py-2 font-semibold transition-all duration-300 ${
                   selectedCategory === category.id
-                    ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700'
-                    : 'bg-white text-gray-700 border border-gray-200 hover:border-blue-300 hover:text-blue-600'
+                    ? "bg-blue-600 text-white shadow-md hover:bg-blue-700"
+                    : "bg-white text-gray-700 border border-gray-200 hover:border-blue-300 hover:text-blue-600"
                 }`}
               >
                 {React.createElement(category.icon, { className: "w-4 h-4 mr-2" })}
@@ -263,12 +263,12 @@ export default function NewsPage() {
               {selectedCategory === "all" ? "All Stories" : `${getCategoryInfo(selectedCategory).label} Stories`}
             </h2>
             <p className="text-gray-600">
-              {newsItems.length} {newsItems.length === 1 ? 'story' : 'stories'} available
+              {newsItems.length} {newsItems.length === 1 ? "story" : "stories"} available
             </p>
           </div>
 
           <div className="grid gap-6">
-            {newsItems.map((item, index) => (
+            {newsItems.map((item) => (
               <motion.article
                 key={item.id}
                 variants={fadeInUp}

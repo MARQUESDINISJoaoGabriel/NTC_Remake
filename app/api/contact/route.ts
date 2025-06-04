@@ -1,23 +1,6 @@
-import { NextResponse } from 'next/server';
-import { Resend } from 'resend';
-
-const resend = new Resend(process.env.RESEND_API_KEY!);
-
-// Define expected shape of the form data
-interface ContactFormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone?: string;
-  age?: string;
-  ntcExperience?: string;
-  interestedDivisions?: string[];
-  parentGuardianName?: string;
-  hearAboutUs?: string;
-  message: string;
-  newsletter?: boolean;
-  dataConsent?: boolean;
-}
+import { NextResponse } from "next/server";
+import { render } from "@react-email/render";
+import ContactFormEmail, { type ContactFormData } from "@/emails/ContactFormEmail";
 
 export async function POST(request: Request) {
   try {
@@ -38,38 +21,102 @@ export async function POST(request: Request) {
       dataConsent,
     } = body;
 
-    // Validate required fields
-    if (!firstName || !lastName || !email || !message) {
-      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    // Enhanced validation
+    if (!firstName?.trim() || !lastName?.trim() || !email?.trim() || !message?.trim()) {
+      return NextResponse.json(
+        { error: "Missing required fields: firstName, lastName, email, and message are required" }, 
+        { status: 400 }
+      );
     }
 
-    await resend.emails.send({
-      from: 'onboarding@resend.dev',
-      to: process.env.TARGET_EMAIL!,
-      subject: `New contact from ${firstName} ${lastName}`,
-      html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || "N/A"}</p>
-        <p><strong>Age:</strong> ${age || "N/A"}</p>
-        <p><strong>Experience Level:</strong> ${ntcExperience || "N/A"}</p>
-        <p><strong>Interested Divisions:</strong> ${
-          Array.isArray(interestedDivisions) && interestedDivisions.length
-            ? interestedDivisions.join(', ')
-            : 'None'
-        }</p>
-        <p><strong>Parent/Guardian Name:</strong> ${parentGuardianName || "N/A"}</p>
-        <p><strong>Heard About Us Via:</strong> ${hearAboutUs || "N/A"}</p>
-        <p><strong>Message:</strong><br/>${message}</p>
-        <p><strong>Newsletter Subscription:</strong> ${newsletter ? "Yes" : "No"}</p>
-        <p><strong>Data Consent Given:</strong> ${dataConsent ? "Yes" : "No"}</p>
-      `,
-    });
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return NextResponse.json(
+        { error: "Invalid email format" }, 
+        { status: 400 }
+      );
+    }
 
-    return NextResponse.json({ message: 'Email sent successfully' });
-  } catch (error) {
-    console.error('Email send error:', error);
-    return NextResponse.json({ error: 'Failed to send email' }, { status: 500 });
+    // Environment configuration
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const targetEmail = process.env.TARGET_EMAIL;
+
+    if (!resendApiKey || !targetEmail) {
+      console.warn("Email service not configured. Contact form data received but not sent:");
+      console.log({
+        name: `${firstName} ${lastName}`,
+        email,
+        message: message.substring(0, 100) + (message.length > 100 ? "..." : "")
+      });
+      
+      return NextResponse.json({ 
+        message: "Contact form received. Email service not configured in this environment.",
+        warning: "Email not sent - missing configuration"
+      });
+    }
+
+    try {
+      const { Resend } = await import("resend");
+      const resend = new Resend(resendApiKey);
+
+      // Clean and prepare the data
+      const cleanData: ContactFormData = {
+        firstName: firstName.trim(),
+        lastName: lastName.trim(),
+        email: email.trim(),
+        phone: phone?.trim(),
+        age: age?.trim(),
+        ntcExperience: ntcExperience?.trim(),
+        interestedDivisions,
+        parentGuardianName: parentGuardianName?.trim(),
+        hearAboutUs: hearAboutUs?.trim(),
+        message: message.trim(),
+        newsletter,
+        dataConsent,
+      };
+
+      // Render the React email component to HTML
+      const emailHtml = await render(ContactFormEmail(cleanData));
+
+      const result = await resend.emails.send({
+        from: "onboarding@resend.dev", // Consider using a branded from address
+        to: [targetEmail],
+        subject: `New Contact: ${firstName} ${lastName} - ${interestedDivisions?.length ? interestedDivisions.join(", ") : "General Inquiry"}`,
+        html: emailHtml,
+        // Add plain text version for better deliverability
+        text: `New contact form submission from ${firstName} ${lastName}\n\nEmail: ${email}\nPhone: ${phone || "N/A"}\nMessage: ${message}`,
+      });
+
+      // Log success for monitoring
+      console.log("Email sent successfully:", { 
+        id: result.data?.id, 
+        to: targetEmail,
+        from: `${firstName} ${lastName} <${email}>` 
+      });
+
+      console.log(resendApiKey);
+
+      return NextResponse.json({ 
+        message: "Email sent successfully",
+        emailId: result.data?.id 
+      });
+
+    } catch (emailError: any) {
+      console.error("Email send error:", emailError);
+      
+      return NextResponse.json({ 
+        error: "Failed to send email",
+        details: process.env.NODE_ENV === 'development' ? emailError.message : "Please try again later"
+      }, { status: 500 });
+    }
+
+  } catch (error: any) {
+    console.error("Contact form error:", error);
+    
+    return NextResponse.json({ 
+      error: "Failed to process contact form",
+      details: process.env.NODE_ENV === 'development' ? error.message : "Invalid request format"
+    }, { status: 500 });
   }
 }

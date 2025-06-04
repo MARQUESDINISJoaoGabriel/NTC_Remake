@@ -1,14 +1,14 @@
-'use client';
-import React, { useState, useEffect } from 'react';
-import { Brain, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+"use client";
+import React, { useState, useEffect } from "react";
+import { Brain} from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from '@/components/ui/dialog';
-import { Button } from '@/components/ui/button';
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 type Question = {
   question: string;
@@ -18,34 +18,34 @@ type Question = {
 
 const allQuestions: Question[] = [
   {
-    question: 'What year was the NTC founded?',
-    options: ['1939', '1944', '1951', '1963'],
-    answer: '1944',
+    question: "What year was the NTC founded?",
+    options: ["1939", "1944", "1951", "1963"],
+    answer: "1944",
   },
   {
-    question: 'Which city is home to NTC headquarters?',
-    options: ['London', 'Brighton', 'Portsmouth', 'Bristol'],
-    answer: 'Portsmouth',
+    question: "Which city is home to NTC headquarters?",
+    options: ["London", "Brighton", "Portsmouth", "Bristol"],
+    answer: "Portsmouth",
   },
   {
-    question: 'Which of these is a core NTC value?',
-    options: ['Chaos', 'Discipline', 'Selfishness', 'Greed'],
-    answer: 'Discipline',
+    question: "Which of these is a core NTC value?",
+    options: ["Chaos", "Discipline", "Selfishness", "Greed"],
+    answer: "Discipline",
   },
   {
-    question: 'What activity is NOT typically part of NTC training?',
-    options: ['Canoeing', 'Navigation', 'Skydiving', 'First Aid'],
-    answer: 'Skydiving',
+    question: "What activity is NOT typically part of NTC training?",
+    options: ["Canoeing", "Navigation", "Skydiving", "First Aid"],
+    answer: "Skydiving",
   },
   {
-    question: 'What does a cadet wear during a formal drill?',
-    options: ['Tracksuit', 'Combat uniform', 'Uniform', 'Casual clothes'],
-    answer: 'Uniform',
+    question: "What does a cadet wear during a formal drill?",
+    options: ["Tracksuit", "Combat uniform", "Uniform", "Casual clothes"],
+    answer: "Uniform",
   },
   {
-    question: 'Which skill is common in NTC?',
-    options: ['Programming', 'Canoeing', 'Skiing', 'Sculpture'],
-    answer: 'Canoeing',
+    question: "Which skill is common in NTC?",
+    options: ["Programming", "Canoeing", "Skiing", "Sculpture"],
+    answer: "Canoeing",
   },
 ];
 
@@ -238,20 +238,20 @@ const QuizDialog = () => {
 
                 <div className="grid gap-3 mb-6">
                   {questions[current].options.map((opt, index) => {
-                    let buttonClasses = 'p-4 text-left border-2 rounded-lg transition-all duration-200 ';
+                    let buttonClasses = "p-4 text-left border-2 rounded-lg transition-all duration-200 ";
                     
                     if (showCorrection) {
                       if (opt === questions[current].answer) {
-                        buttonClasses += 'bg-green-100 border-green-500 text-green-800';
+                        buttonClasses += "bg-green-100 border-green-500 text-green-800";
                       } else if (opt === selected && opt !== questions[current].answer) {
-                        buttonClasses += 'bg-red-100 border-red-500 text-red-800';
+                        buttonClasses += "bg-red-100 border-red-500 text-red-800";
                       } else {
-                        buttonClasses += 'bg-gray-50 border-gray-200 text-gray-600';
+                        buttonClasses += "bg-gray-50 border-gray-200 text-gray-600";
                       }
                     } else if (selected === opt) {
-                      buttonClasses += 'bg-blue-100 border-blue-500 text-blue-800';
+                      buttonClasses += "bg-blue-100 border-blue-500 text-blue-800";
                     } else {
-                      buttonClasses += 'bg-white border-gray-200 text-gray-800 hover:border-blue-300 hover:bg-blue-50';
+                      buttonClasses += "bg-white border-gray-200 text-gray-800 hover:border-blue-300 hover:bg-blue-50";
                     }
 
                     return (
@@ -282,7 +282,7 @@ const QuizDialog = () => {
                         onClick={handleNext}
                         className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2"
                       >
-                        {current + 1 < questions.length ? 'Next Question' : 'See Results'}
+                        {current + 1 < questions.length ? "Next Question" : "See Results"}
                       </Button>
                     </motion.div>
                   )}

@@ -1,6 +1,6 @@
-import React from 'react';
-import { Anchor, Shield, Users, Calendar, Award, Compass, Ship, Waves, Star } from 'lucide-react';
-import Image from 'next/image';
+import React from "react";
+import { Anchor, Shield, Users, Calendar, Award, Compass, Ship, Star } from "lucide-react";
+import Image from "next/image";
 
 const AboutUsSection = () => {
   return (
@@ -28,7 +28,7 @@ const AboutUsSection = () => {
             </h1>
             <p className="text-xl leading-relaxed mb-8 text-blue-100">
               Ready to challenge yourself? Join thousands of young people developing real maritime skills, 
-              building lasting friendships, and discovering what you're truly capable of achieving.
+              building lasting friendships, and discovering what you"re truly capable of achieving.
             </p>
             <div className="flex flex-wrap gap-4">
               <div className="bg-white bg-opacity-20 rounded-lg px-4 py-2">
@@ -47,7 +47,7 @@ const AboutUsSection = () => {
           </div>
           <div className="relative">
             <div className="bg-white rounded-lg aspect-[4/3] flex items-center justify-center shadow-2xl overflow-hidden">
-              <Image src={'/images/ntc-cadets.jpg'} alt='NTC Cadets in Training' width={500} height={500} className='w-full h-full object-cover'/>
+              <Image src={"/images/ntc-cadets.jpg"} alt="NTC Cadets in Training" width={500} height={500} className="w-full h-full object-cover"/>
             </div>
           </div>
         </div>
@@ -55,8 +55,6 @@ const AboutUsSection = () => {
     </section>
   );
 };
-
-// History Component
 const HistorySection = () => {
   return (
     <section className="py-16 bg-gray-50">
@@ -100,7 +98,7 @@ const HistorySection = () => {
                 <h3 className="text-xl font-bold text-blue-900">National Expansion</h3>
               </div>
               <p className="text-gray-700 leading-relaxed">
-                From that single unit, we've grown to over 60 Training Ships across the UK. 
+                From that single unit, we"ve grown to over 60 Training Ships across the UK. 
                 Each unit maintains the highest standards of maritime training while fostering 
                 local community connections.
               </p>
@@ -398,7 +396,7 @@ const OrganizationSection = () => {
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-8 max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-blue-900 mb-4">Ready to Join Our Community?</h3>
             <p className="text-gray-700 leading-relaxed text-lg">
-              Whether you're seeking personal development, maritime skills, or lasting friendships, 
+              Whether you"re seeking personal development, maritime skills, or lasting friendships, 
               the NTC offers a structured pathway to achievement and success. Discover your potential 
               with us.
             </p>

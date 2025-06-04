@@ -1,21 +1,21 @@
-import React from 'react';
+import React from "react";
 
 const pathSteps = [
   {
-    title: 'Step 1: Join as a Recruit',
-    description: 'New members begin their journey learning basic discipline, teamwork, and NTC values.',
+    title: "Step 1: Join as a Recruit",
+    description: "New members begin their journey learning basic discipline, teamwork, and NTC values.",
   },
   {
-    title: 'Step 2: Become a Cadet',
-    description: 'Cadets engage in regular drills, maritime skills training, and community activities.',
+    title: "Step 2: Become a Cadet",
+    description: "Cadets engage in regular drills, maritime skills training, and community activities.",
   },
   {
-    title: 'Step 3: Senior Cadet',
-    description: 'Demonstrate leadership, assist with training new recruits, and take on responsibilities.',
+    title: "Step 3: Senior Cadet",
+    description: "Demonstrate leadership, assist with training new recruits, and take on responsibilities.",
   },
   {
-    title: 'Step 4: Cadet Officer',
-    description: 'Lead units, help plan events, and represent NTC at regional and national levels.',
+    title: "Step 4: Cadet Officer",
+    description: "Lead units, help plan events, and represent NTC at regional and national levels.",
   },
 ];
 

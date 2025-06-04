@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-
-let newsItems = [
+const newsItems = [
   {
     id: "1",
     title: "Welcome Aboard!",

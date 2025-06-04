@@ -138,8 +138,8 @@ export default function TestimonialsSimple() {
                 onClick={() => goToSlide(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
                   index === currentIndex 
-                    ? 'bg-ntcBlue scale-125' 
-                    : 'bg-slate-300 hover:bg-slate-400'
+                    ? "bg-ntcBlue scale-125" 
+                    : "bg-slate-300 hover:bg-slate-400"
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
@@ -164,8 +164,8 @@ export default function TestimonialsSimple() {
             onClick={() => goToSlide(index)}
             className={`p-6 rounded-2xl border-2 cursor-pointer transition-all duration-300 ${
               index === currentIndex
-                ? 'border-ntcBlue bg-blue-50 shadow-lg'
-                : 'border-slate-200 bg-white hover:border-slate-300 hover:shadow-md'
+                ? "border-ntcBlue bg-blue-50 shadow-lg"
+                : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-md"
             }`}
           >
             <div className="flex items-center gap-3 mb-3">

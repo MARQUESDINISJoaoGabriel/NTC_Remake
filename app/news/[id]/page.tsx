@@ -1,9 +1,9 @@
-// MAIN WEBSITE - app/news/[id]/page.tsx
+// MAIN WEBSITE - app/news/[id]/page.tsx (Fixed for Next.js 15)
 "use client";
 
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowLeft, Star, Anchor, Share2, Bookmark, Trophy, Users, Heart, Compass } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Star, Anchor, Share2, Bookmark, Trophy, Heart, Compass } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -40,7 +40,7 @@ const categories = [
 ];
 
 // CHANGE THIS TO YOUR ADMIN WEBSITE URL
-const ADMIN_API_URL = process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:3001';
+const ADMIN_API_URL = process.env.NEXT_PUBLIC_ADMIN_API_URL;
 
 const getCategoryInfo = (category: string) => {
   const cat = categories.find(c => c.id === category);
@@ -59,7 +59,8 @@ const getTimeAgo = (dateString: string) => {
   return `${Math.ceil(diffDays / 30)} months ago`;
 };
 
-export default function NewsArticlePage({ params }: { params: { id: string } }) {
+export default function NewsArticlePage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = React.use(params);
   const [article, setArticle] = useState<NewsArticle | null>(null);
   const [relatedArticles, setRelatedArticles] = useState<RelatedArticle[]>([]);
   const [loading, setLoading] = useState(true);
@@ -71,13 +72,13 @@ export default function NewsArticlePage({ params }: { params: { id: string } }) 
         setLoading(true);
         
         // Fetch the main article
-        const articleResponse = await fetch(`${ADMIN_API_URL}/api/public/news/${params.id}`);
+        const articleResponse = await fetch(`${ADMIN_API_URL}/api/public/news/${resolvedParams.id}`);
         if (articleResponse.status === 404) {
           notFound();
           return;
         }
         if (!articleResponse.ok) {
-          throw new Error('Failed to fetch article');
+          throw new Error("Failed to fetch article");
         }
         
         const articleData = await articleResponse.json();
@@ -89,22 +90,22 @@ export default function NewsArticlePage({ params }: { params: { id: string } }) 
           const relatedData = await relatedResponse.json();
           // Filter out current article and limit to 2
           const filtered = relatedData
-            .filter((item: RelatedArticle) => item.id !== params.id)
+            .filter((item: RelatedArticle) => item.id !== resolvedParams.id)
             .slice(0, 2);
           setRelatedArticles(filtered);
         }
         
         setError(null);
       } catch (err) {
-        setError('Failed to load article');
-        console.error('Error fetching article:', err);
+        setError("Failed to load article");
+        console.error("Error fetching article:", err);
       } finally {
         setLoading(false);
       }
     };
 
     fetchArticle();
-  }, [params.id]);
+  }, [resolvedParams.id]);
 
   if (loading) {
     return (
@@ -122,7 +123,7 @@ export default function NewsArticlePage({ params }: { params: { id: string } }) 
       <main className="max-w-4xl mx-auto px-6 py-16">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-red-600 mb-4">Error Loading Article</h1>
-          <p className="text-gray-600">{error || 'Article not found'}</p>
+          <p className="text-gray-600">{error || "Article not found"}</p>
           <Link href="/news">
             <Button className="mt-4">Back to News</Button>
           </Link>
@@ -135,20 +136,20 @@ export default function NewsArticlePage({ params }: { params: { id: string } }) 
 
   // Format content with proper line breaks and styling
   const formatContent = (content: string) => {
-    return content.split('\n').map((paragraph, index) => {
-      if (paragraph.startsWith('## ')) {
+    return content.split("\n").map((paragraph, index) => {
+      if (paragraph.startsWith("## ")) {
         return (
           <h2 key={index} className="text-2xl font-bold text-blue-900 mt-8 mb-4">
-            {paragraph.replace('## ', '')}
+            {paragraph.replace("## ", "")}
           </h2>
         );
-      } else if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
+      } else if (paragraph.startsWith("**") && paragraph.endsWith("**")) {
         return (
           <h3 key={index} className="text-xl font-semibold text-blue-700 mt-6 mb-3">
-            {paragraph.replace(/\*\*/g, '')}
+            {paragraph.replace(/\*\*/g, "")}
           </h3>
         );
-      } else if (paragraph.trim() === '') {
+      } else if (paragraph.trim() === "") {
         return <div key={index} className="h-4"></div>;
       } else {
         return (

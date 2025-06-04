@@ -1,36 +1,36 @@
-import React from 'react';
-import { LifeBuoy, Navigation, Users, Waves, Map, Compass } from 'lucide-react';
+import React from "react";
+import { LifeBuoy, Navigation, Users, Waves, Map, Compass } from "lucide-react";
 
 const activities = [
   {
     icon: <Waves className="w-8 h-8 text-blue-600" />,
-    title: 'Canoeing & Water Sports',
-    description: 'Learn paddling, balance, and teamwork through exciting aquatic activities.',
+    title: "Canoeing & Water Sports",
+    description: "Learn paddling, balance, and teamwork through exciting aquatic activities.",
   },
   {
     icon: <Navigation className="w-8 h-8 text-blue-600" />,
-    title: 'Navigation & Map Reading',
-    description: 'Understand bearings, charts, and practical navigation both on land and sea.',
+    title: "Navigation & Map Reading",
+    description: "Understand bearings, charts, and practical navigation both on land and sea.",
   },
   {
     icon: <Users className="w-8 h-8 text-blue-600" />,
-    title: 'Drill & Discipline',
-    description: 'Master coordination, discipline, and respect through structured drills.',
+    title: "Drill & Discipline",
+    description: "Master coordination, discipline, and respect through structured drills.",
   },
   {
     icon: <LifeBuoy className="w-8 h-8 text-blue-600" />,
-    title: 'First Aid & Rescue',
-    description: 'Train in basic first aid, emergency response, and rescue techniques.',
+    title: "First Aid & Rescue",
+    description: "Train in basic first aid, emergency response, and rescue techniques.",
   },
   {
     icon: <Map className="w-8 h-8 text-blue-600" />,
-    title: 'Field Exercises',
-    description: 'Participate in camps and exercises that promote independence and team leadership.',
+    title: "Field Exercises",
+    description: "Participate in camps and exercises that promote independence and team leadership.",
   },
   {
     icon: <Compass className="w-8 h-8 text-blue-600" />,
-    title: 'Maritime Skills',
-    description: 'Develop practical boating and seamanship abilities from the very first stage.',
+    title: "Maritime Skills",
+    description: "Develop practical boating and seamanship abilities from the very first stage.",
   },
 ];
 

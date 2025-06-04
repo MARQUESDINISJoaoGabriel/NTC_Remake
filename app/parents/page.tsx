@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import TestimonialsSimple from "@/components/TestimonialsSimple";
+import  TestimonialsSimple  from "@/components/TestimonialsSimple";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -127,7 +127,7 @@ export default function ParentsPage() {
           For Parents & Leaders
         </h1>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-          Discover how the NTC supports families and creates opportunities for adults to make a difference in young people's lives.
+          Discover how the NTC supports families and creates opportunities for adults to make a difference in young people"s lives.
         </p>
       </motion.div>
 
@@ -306,7 +306,7 @@ export default function ParentsPage() {
                       <ul className="space-y-2 text-sm text-green-700">
                         <li className="flex items-center gap-2">
                           <CheckCircle className="w-4 h-4" />
-                          Enhanced DBS check (we'll help arrange this)
+                          Enhanced DBS check (we"ll help arrange this)
                         </li>
                         <li className="flex items-center gap-2">
                           <CheckCircle className="w-4 h-4" />
@@ -314,7 +314,7 @@ export default function ParentsPage() {
                         </li>
                         <li className="flex items-center gap-2">
                           <CheckCircle className="w-4 h-4" />
-                          Commitment to young people's development
+                          Commitment to young people"s development
                         </li>
                         <li className="flex items-center gap-2">
                           <CheckCircle className="w-4 h-4" />
@@ -385,8 +385,8 @@ export default function ParentsPage() {
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <p className="text-slate-600 leading-relaxed mb-6">
-                  Whether you're a parent with questions or someone interested in volunteering, 
-                  we're here to help. Get in touch with us or your local unit to start the conversation.
+                  Whether you"re a parent with questions or someone interested in volunteering, 
+                  we"re here to help. Get in touch with us or your local unit to start the conversation.
                 </p>
                 <div className="space-y-3 text-sm">
                   <div className="flex items-center gap-3">

@@ -1,12 +1,12 @@
-'use client';
-import React from 'react';
-import { useRouter } from 'next/navigation';
+"use client";
+import React from "react";
+import { useRouter } from "next/navigation";
 
 const JoinNowSection = () => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push('/contact');
+    router.push("/contact");
   };
 
   return (

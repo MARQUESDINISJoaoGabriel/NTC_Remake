@@ -1,5 +1,5 @@
-import React from 'react';
-import { ShieldCheck, Users, Anchor } from 'lucide-react'; // Make sure you have lucide-react installed
+import React from "react";
+import { ShieldCheck, Users, Anchor } from "lucide-react"; // Make sure you have lucide-react installed
 
 const reasons = [
   {
@@ -28,7 +28,7 @@ const WhyJoinSection = () => {
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-3xl font-bold text-blue-800 mb-10">Why Join the NTC?</h2>
         <p className="text-gray-700 mb-12 max-w-3xl mx-auto">
-          Joining the Nautical Training Corps is more than just a hobby — it's an adventure that builds character, confidence,
+          Joining the Nautical Training Corps is more than just a hobby — it"s an adventure that builds character, confidence,
           and lifelong friendships.
         </p>
 

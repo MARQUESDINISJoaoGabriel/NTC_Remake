@@ -1,21 +1,21 @@
-import React from 'react';
-import { CalendarDays } from 'lucide-react';
+import React from "react";
+import { CalendarDays } from "lucide-react";
 
 const events = [
   {
-    date: 'June 15, 2025',
-    title: 'Summer Leadership Camp',
-    description: 'A 3-day training event focused on leadership, survival skills, and team building.',
+    date: "June 15, 2025",
+    title: "Summer Leadership Camp",
+    description: "A 3-day training event focused on leadership, survival skills, and team building.",
   },
   {
-    date: 'July 8, 2025',
-    title: 'National Parade in London',
-    description: 'Cadets from all over the UK will gather in central London for our official annual parade.',
+    date: "July 8, 2025",
+    title: "National Parade in London",
+    description: "Cadets from all over the UK will gather in central London for our official annual parade.",
   },
   {
-    date: 'August 20, 2025',
-    title: 'Maritime Safety Workshop',
-    description: 'Learn about water safety, rescue protocols, and navigation basics.',
+    date: "August 20, 2025",
+    title: "Maritime Safety Workshop",
+    description: "Learn about water safety, rescue protocols, and navigation basics.",
   },
 ];
 

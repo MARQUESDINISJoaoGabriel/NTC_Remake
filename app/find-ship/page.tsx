@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, MapPin, Filter, Users, Clock, Phone, Mail, Navigation } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Search, MapPin, Users, Clock, Mail, Navigation } from "lucide-react";
+import { Card, CardContent} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -108,7 +108,7 @@ export default function FindShipPage() {
       unit.name.toLowerCase().includes(search.toLowerCase()) ||
       unit.location.toLowerCase().includes(search.toLowerCase());
     const matchesAge = selectedAgeGroup === "All Ages" || 
-      unit.ageGroups.some(age => age.includes(selectedAgeGroup.split('-')[0]));
+      unit.ageGroups.some(age => age.includes(selectedAgeGroup.split("-")[0]));
     
     return matchesRegion && matchesSearch && matchesAge;
   });
@@ -195,7 +195,7 @@ export default function FindShipPage() {
       >
         <div>
           <h2 className="text-2xl font-semibold text-slate-800">
-            {filteredUnits.length} Unit{filteredUnits.length !== 1 ? 's' : ''} Found
+            {filteredUnits.length} Unit{filteredUnits.length !== 1 ? "s" : ""} Found
           </h2>
           <p className="text-slate-600">
             {selectedRegion !== "All Regions" && `in ${selectedRegion} `}
@@ -356,9 +356,9 @@ export default function FindShipPage() {
       >
         <Card className="bg-gradient-to-br from-ntcBlue to-blue-600 text-white border-0">
           <CardContent className="p-8 text-center">
-            <h2 className="text-3xl font-bold mb-4">Can't Find a Unit Near You?</h2>
+            <h2 className="text-3xl font-bold mb-4">Can"t Find a Unit Near You?</h2>
             <p className="text-xl mb-6 text-blue-100">
-              Don't worry! We're always looking to expand and can help you start a new unit in your area.
+              Don"t worry! We"re always looking to expand and can help you start a new unit in your area.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button variant="secondary" size="lg">

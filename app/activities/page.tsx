@@ -39,7 +39,7 @@ const staggerContainer = {
 };
 
 // CHANGE THIS TO YOUR ADMIN WEBSITE URL
-const ADMIN_API_URL = process.env.NEXT_PUBLIC_ADMIN_API_URL || 'http://localhost:3001';
+const ADMIN_API_URL = process.env.NEXT_PUBLIC_ADMIN_API_URL;
 
 // Icon mapping for categories
 const categoryIcons = {
@@ -77,15 +77,15 @@ export default function ActivitiesPage() {
         const activitiesResponse = await fetch(`${ADMIN_API_URL}/api/public/activities${categoryParam}`);
         
         if (!activitiesResponse.ok) {
-          throw new Error('Failed to fetch activities');
+          throw new Error("Failed to fetch activities");
         }
         
         const activitiesData = await activitiesResponse.json();
         setActivities(activitiesData);
         setError(null);
       } catch (err) {
-        setError('Failed to load activities');
-        console.error('Error fetching activities:', err);
+        setError("Failed to load activities");
+        console.error("Error fetching activities:", err);
       } finally {
         setLoading(false);
       }
@@ -196,7 +196,7 @@ export default function ActivitiesPage() {
                   initial="initial"
                   animate="animate"
                 >
-                  {activities.map((activity, index) => {
+                  {activities.map((activity) => {
                     const ActivityIcon = getActivityIcon(activity.category);
                     return (
                       <motion.div key={activity.id} variants={fadeInUp}>
@@ -219,7 +219,7 @@ export default function ActivitiesPage() {
                               {activity.description}
                             </p>
                             <div>
-                              <h4 className="font-semibold text-blue-900 mb-3">Skills You'll Develop:</h4>
+                              <h4 className="font-semibold text-blue-900 mb-3">Skills You"ll Develop:</h4>
                               <div className="flex flex-wrap gap-2">
                                 {activity.skills.map((skill, skillIndex) => (
                                   <Badge 
@@ -334,7 +334,7 @@ export default function ActivitiesPage() {
               </div>
               <h2 className="text-4xl font-bold mb-6">Ready to Take on the Challenge?</h2>
               <p className="text-xl mb-8 text-blue-100 max-w-3xl mx-auto">
-                Join thousands of young people who've discovered their potential through the NTC. 
+                Join thousands of young people who"ve discovered their potential through the NTC. 
                 Every skill you learn, every challenge you overcome, shapes who you become.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center">
