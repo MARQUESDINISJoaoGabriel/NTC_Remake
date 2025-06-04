@@ -1,33 +1,30 @@
 "use client";
+import React from "react";
+import { useRouter } from "next/navigation";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+const JoinNowSection = () => {
+  const router = useRouter();
 
-export default function JoinNowSection() {
+  const handleClick = () => {
+    router.push("/contact");
+  };
+
   return (
-    <section className="bg-ntcBlue text-white py-20 px-6 md:px-12 text-center">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Ready to Start Your NTC Adventure?
-        </h2>
-        <p className="text-lg md:text-xl mb-6">
-          Join over 1,000 young people across the UK learning new skills, meeting friends, and
-          building confidence.
+    <section className="bg-blue-50 py-16 px-4 md:px-8">
+      <div className="max-w-4xl mx-auto text-center">
+        <h2 className="text-3xl font-bold text-blue-800 mb-4">Ready to Join the Corps?</h2>
+        <p className="text-gray-700 mb-6">
+          Your journey in maritime adventure, leadership, and lifelong friendships begins here.
         </p>
-
-        <div className="flex flex-col md:flex-row justify-center gap-4 mt-6">
-          <Link href="#find-ship">
-            <Button className="bg-white text-ntcBlue hover:bg-gray-100 font-semibold text-lg px-6 py-3 rounded-xl">
-              Find a Training Ship
-            </Button>
-          </Link>
-          <Link href="/contact">
-            <Button className="bg-yellow-400 text-black hover:bg-yellow-300 font-semibold text-lg px-6 py-3 rounded-xl">
-              Contact Us
-            </Button>
-          </Link>
-        </div>
+        <button
+          onClick={handleClick}
+          className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition"
+        >
+          Join Now
+        </button>
       </div>
     </section>
   );
-}
+};
+
+export default JoinNowSection;
