@@ -22,7 +22,7 @@ export default function RootLayout({
         className={font.className + " bg-white text-gray-900 dark:bg-slate-900 dark:text-slate-100"}
       >
         <Navbar />
-        {children}
+        <main className="flex-grow">{children}</main>
         <Footer />
       </body>
     </html>
